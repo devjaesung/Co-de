@@ -1,17 +1,17 @@
-import './App.css';
-import {Container} from '@mui/material'
-// import TopBar from './components/Topbar';
-import Loginpage from './components/loginpage/Loginpage'
-// import Mypage from './components/mypage/Mypage'
-
-function App() {
+import React from 'react'
+import {Route, Routes } from 'react-router-dom'
+import Loginpage from'./components/loginpage/Loginpage';
+import Registerpage from'./components/loginpage/Registerpage';
+import { Container } from '@mui/system';
+export default function App() {
+  
   return (
     <Container>
-      {/* <TopBar /> */}
-      <Loginpage/>
-      {/* <Mypage/> */}
+        <Routes>
+          <Route path='/Registerpage' element={<Registerpage/>}/>
+          <Route path='/Loginpage' element={<Loginpage/>}/>
+          <Route path='/' element={<Loginpage/>}/>
+        </Routes>
     </Container>
-  );
+  )
 }
-
-export default App;
