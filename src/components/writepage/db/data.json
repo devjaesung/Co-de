@@ -1,0 +1,34 @@
+{
+    "genre": [
+        { "id": 1, "category": "발라드"}, 
+        { "id": 2, "category": "댄스"}, 
+        { "id": 3, "category": "랩/힙합"}, 
+        { "id": 4, "category": "R&B/Soul"}, 
+        { "id": 5, "category": "인디음악"}, 
+        { "id": 6, "category": "록/메탈"}, 
+        { "id": 7, "category": "트로트"}, 
+        { "id": 8, "category": "포크/블루스"},
+        { "id": 9, "category": "OST"},
+        { "id": 10, "category": "클래식"},
+        { "id": 11, "category": "POP"}
+    ],
+    "thema": [
+        { "id": 1, "category": "기분전환"},
+        { "id": 2, "category": "힐링"},
+        { "id": 3, "category": "드라이브"},
+        { "id": 4, "category": "사랑"},
+        { "id": 5, "category": "추억"},
+        { "id": 6, "category": "이별"},
+        { "id": 7, "category": "여름"},
+        { "id": 8, "category": "여행"},
+        { "id": 9, "category": "운동"},
+        { "id": 10, "category": "비"},
+        { "id": 11, "category": "공부"},
+        { "id": 12, "category": "카페"},
+        { "id": 13, "category": "봄"},
+        { "id": 14, "category": "노래방"},
+        { "id": 14, "category": "노래방"},
+        { "id": 15, "category": "기타"}
+
+    ]
+}

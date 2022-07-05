@@ -1,20 +1,19 @@
 import React from 'react'
-import { Container, Divider } from '@mui/material';
+import TalkForm from './writepagein/TalkForm';
 import WriteHeader from './writepagein/WriteHeader';
-import WriteForm from './writepagein/WriteForm';
+import { Container, Divider } from '@mui/material';
 
-
-const Writepage = () => {
+const Writetalk = () => {
   return (
     <Container
-      sx={{background:"#fff",
+      sx={{background:"#fff", 
            marginTop:"55px",
            padding:"40px 0"}}>
       <WriteHeader />
       <Divider sx={{border:"1px solid rgba(0, 0, 0, 0.12)"}} />
-      <WriteForm />
+      <TalkForm />
     </Container>
   )
 }
 
-export default Writepage
+export default Writetalk
