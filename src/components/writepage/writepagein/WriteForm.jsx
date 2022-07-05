@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, FormGroup, FormLabel, Input, FormControlLabel, Checkbox, Divider, FormHelperText, TextareaAutosize } from '@mui/material'
+import { Box, FormGroup, FormLabel, Input, FormControlLabel, Checkbox, Divider, FormHelperText, TextareaAutosize, Button } from '@mui/material'
 import { Add } from '@mui/icons-material';
 import data from '../db/data';
 import './writeform.css';
@@ -51,6 +51,7 @@ const WriteForm = ({td}) => {
             </div>
           ))
         }
+        <Button><Add/></Button>
         </FormGroup>
       </Box>
       <Box className="d-basicbox">

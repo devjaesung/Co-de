@@ -8,3 +8,9 @@
 input::file-selector-button {
     display: none;
 }
+.talkcategory{
+    padding:10px 30px;
+}
+.talkcategory .button{
+    color:#333;
+}

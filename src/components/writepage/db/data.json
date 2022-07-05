@@ -27,8 +27,13 @@
         { "id": 12, "category": "카페"},
         { "id": 13, "category": "봄"},
         { "id": 14, "category": "노래방"},
-        { "id": 14, "category": "노래방"},
-        { "id": 15, "category": "기타"}
+        { "id": 14, "category": "노래방"}
 
+    ],
+    "talks": [
+        { "id": 1, "category": "노래찾기" },
+        { "id": 2, "category": "노래추천" },
+        { "id": 3, "category": "노래고민" },
+        { "id": 4, "category": "이야기" }
     ]
 }
