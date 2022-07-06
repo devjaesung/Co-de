@@ -9,7 +9,7 @@ const TopBar = () => {
     <AppBar position="fixed">
   <Toolbar variant="dense" 
   sx={{
-    backgroundColor:"#6667AB",
+    background:"linear-gradient(180deg, #6667AB 0%, #9F8AA6 100%);",
     justifyContent: "space-between"
     }}>
     <a href="#!"><img src="images/test.svg" alt="logo" /></a>
