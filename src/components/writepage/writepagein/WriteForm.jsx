@@ -1,74 +1,54 @@
 import React from 'react'
-import { Box, FormGroup, FormLabel, Input, FormControlLabel, Checkbox, Divider, FormHelperText, TextareaAutosize, Button } from '@mui/material'
+import { Box, FormGroup, FormLabel, Input, Divider, FormControlLabel, Checkbox, TextareaAutosize } from '@mui/material';
 import { Add } from '@mui/icons-material';
-import data from '../db/data';
+import SongTag from './SongTag';
 import './writeform.css';
+import data from '../db/data.json';
 
-const WriteForm = ({td}) => {
-  const handleInput = (e) => {
-    let inputs = e.target.value;
-    console.log(inputs);
-  }
-  console.log(td);
-
+const WriteForm = () => {
   return (
     <form action="/post">
       <Box className="d-basicbox">
         <FormGroup>
-          <FormLabel htmlFor="file_upload" sx={{textAlign:"center"}}>
-            <Add sx={{color:"#777", display:"block", margin:"0 auto"}}/>
-            <Input type="file" id="file_upload" sx={{border:"none", padding:"0 auto"}} onChange={handleInput} />
+          <FormLabel htmlFor="file_upload">
+            <Add sx={{display:"block", margin:"0 auto"}} />
+            <Input type="file" id="file_upload" 
+              sx={{display:"block", width:"300px", margin:"0 auto", padding:"5px 15px"}} />
           </FormLabel>
         </FormGroup>
       </Box>
       <Box className="d-basicbox">
-        <Divider flexItem>곡정보</Divider>    
-        <FormGroup row sx={{p:"10px 30px", width:"100%"}}>
-          <Input type="text" placeholder="노래제목" name="songTitle" sx={{width:"49%", mr:"10px"}} onChange={handleInput} />
-          <Input type="text" placeholder="가수명" name="songArtist" sx={{width:"49%"}} onChange={handleInput} />
+        <Divider>곡정보</Divider>
+        <FormGroup row sx={{p:"10px 30px 15px", width:"100%", justifyContent:"space-between"}}>
+          <Input type="text" id="songname" placeholder="노래제목" sx={{width:"49%"}} />
+          <Input type="text" id="artistname" placeholder="가수명" sx={{width:"49%"}} />
         </FormGroup>
-
-        <Divider flexItem>장르</Divider>  
-        <FormGroup row sx={{p:"10px 30px"}}>  
-        {
-          data.genre.map(gd => (
-            <div key={gd.id}>
-              <FormControlLabel control={<Checkbox size="small" />} label={gd.category} />
-            </div>
-          ))
-        }
+        <Divider>장르</Divider>
+        <FormGroup row sx={{p:"10px 30px 15px"}}>
+          {
+            data.genre.map((gd) => (
+              <div key={gd.id}>
+                <label className="tagWrap">
+                  <input type="checkbox" id="tagCheck" name="color" value="{gd.category}" />
+                  <span id="tagName">{gd.category}</span>
+                </label>
+              </div>
+            ))
+          }
         </FormGroup>
-
-        <Divider flexItem># 태그</Divider>
-        <FormHelperText>
-          복수 응답 가능! 더 많은 태그들을 추가해보세요!
-        </FormHelperText>
-        <FormGroup row sx={{p:"10px 30px"}}>
-        {
-          data.thema.map(td => (
-            <div key={td.id}>
-              <FormControlLabel control={<Checkbox size="small" />} label={td.category} />
-            </div>
-          ))
-        }
-        <Button><Add/></Button>
-        </FormGroup>
+        <SongTag />
       </Box>
       <Box className="d-basicbox">
-        <Divider flexItem>글 내용</Divider>
-        <FormGroup sx={{p:"10px 30px"}}>
-          <Input type="text" placeholder="제목" sx={{width:"100%", mb:"10px"}} />
-          <TextareaAutosize aria-label="empty textarea" placeholder="내용을 입력하세요." 
-            style={{width:"100%", 
-                    height:"250px",
-                    border:"none",
-                    borderRadius:"8px",
-                    padding:"10px"}} />
+        <Divider>글 내용</Divider>
+        <FormGroup sx={{p:"10px 30px 15px"}}>
+          <Input type="text" placeholder="제목을 입력하세요."
+            sx={{display:"block", mb:"15px"}} />
+          <TextareaAutosize placeholder="내용을 입력하세요."
+            style={{padding:"15px", border:"none", borderRadius:"10px", height:"250px"}} />
         </FormGroup>
       </Box>
     </form>
   )
 }
-
 
 export default WriteForm

@@ -1,4 +1,5 @@
 *{box-sizing:border-box;}
+/* WriteForm */
 .d-basicbox{
     background:#ededed;
     border-radius:8px;
@@ -8,9 +9,52 @@
 input::file-selector-button {
     display: none;
 }
-.talkcategory{
+
+/* SongTag */
+.tagWrap{
+    margin-right:15px;
+    font-size:16px;
+}
+input[type="checkbox"]{
+    margin-right:6px;
+    margin-top:10px;
+    margin-bottom:10px;
+    width:15px;
+    height:15px;
+}
+#addinput{
+    border:none;
+    border-bottom:1px solid #555;
+    background:none;
+    height:70%;
+    width:100px;
+}
+#addinput:focus{
+    outline:none;
+}
+#addIcon{
+    background:#fff;
+    border:1px solid rgba(0, 0, 0, .3);
+    padding:3px 10px;
+    border-radius:3px;
+    margin-top:5px;
+    cursor:pointer;
+}
+
+/* .talkcategory{
     padding:10px 30px;
 }
 .talkcategory .button{
     color:#333;
 }
+.addbtn{
+    margin:5px 5px;
+    border:none;
+    border-radius:8px;
+    background:#fff;
+    box-shadow:2px 2px 3px rgba(0, 0, 0, .5);
+    cursor:pointer;
+}
+.addbtn:active{
+    transform: translate(2px, 2px);
+} */

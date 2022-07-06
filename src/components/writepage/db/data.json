@@ -26,9 +26,7 @@
         { "id": 11, "category": "공부"},
         { "id": 12, "category": "카페"},
         { "id": 13, "category": "봄"},
-        { "id": 14, "category": "노래방"},
         { "id": 14, "category": "노래방"}
-
     ],
     "talks": [
         { "id": 1, "category": "노래찾기" },
