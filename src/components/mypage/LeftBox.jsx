@@ -43,7 +43,7 @@ const LeftBox = () => {
                }
             }}
             >
-            수정
+            수정1
             </Button>
         </Box>
       <Box
