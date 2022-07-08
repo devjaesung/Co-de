@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, FormGroup, FormLabel, Input, Divider, FormControlLabel, Checkbox, TextareaAutosize } from '@mui/material';
+import { Box, FormGroup, FormLabel, Input, Divider, TextareaAutosize } from '@mui/material';
 import { Add } from '@mui/icons-material';
 import SongTag from './SongTag';
 import './writeform.css';
@@ -28,7 +28,7 @@ const WriteForm = () => {
           {
             data.genre.map((gd) => (
               <div key={gd.id}>
-                <label className="tagWrap">
+                <label id="tagWrap">
                   <input type="checkbox" id="tagCheck" name="color" value="{gd.category}" />
                   <span id="tagName">{gd.category}</span>
                 </label>

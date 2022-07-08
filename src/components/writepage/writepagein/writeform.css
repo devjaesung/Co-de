@@ -11,7 +11,7 @@ input::file-selector-button {
 }
 
 /* SongTag */
-.tagWrap{
+#tagWrap{
     margin-right:15px;
     font-size:16px;
 }
@@ -22,14 +22,16 @@ input[type="checkbox"]{
     width:15px;
     height:15px;
 }
-#addinput{
+#addInput{
     border:none;
     border-bottom:1px solid #555;
     background:none;
-    height:70%;
-    width:100px;
+    width:150px;
+    padding-left:10px;
+    padding-right:10px;
+    padding-bottom:5px;
 }
-#addinput:focus{
+#addInput:focus{
     outline:none;
 }
 #addIcon{
@@ -40,21 +42,16 @@ input[type="checkbox"]{
     margin-top:5px;
     cursor:pointer;
 }
-
+#addbtn:hover{
+    background:#6667AB;
+}
 /* .talkcategory{
     padding:10px 30px;
 }
 .talkcategory .button{
     color:#333;
 }
-.addbtn{
-    margin:5px 5px;
-    border:none;
-    border-radius:8px;
-    background:#fff;
-    box-shadow:2px 2px 3px rgba(0, 0, 0, .5);
-    cursor:pointer;
-}
+
 .addbtn:active{
     transform: translate(2px, 2px);
 } */
