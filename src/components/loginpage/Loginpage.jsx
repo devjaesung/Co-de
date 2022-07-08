@@ -263,6 +263,9 @@ export default function SignIn() {
               },
               }}>회원가입하기</Button>
               </Link>
+              <Link to ="/Testcomments">
+                <Button>테스트페이지</Button>
+              </Link>
        
 
         </Box>
