@@ -28,7 +28,7 @@ const LeftBox = () => {
             marginLeft:3,
             display: 'flex',
             alignItems:'center'
-        }}
+        }}                                                                        
         >
             <h2>NickName</h2>
             <Button
@@ -43,7 +43,7 @@ const LeftBox = () => {
                }
             }}
             >
-            수정1
+            수정
             </Button>
         </Box>
       <Box
