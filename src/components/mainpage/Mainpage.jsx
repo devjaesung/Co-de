@@ -1,8 +1,13 @@
 import React from 'react'
+import Commentpage from './Commentpage'
+import Topbar from'../Topbar'
 
 const Mainpage = () => {
   return (
-    <div>Mainpage</div>
+    <>
+    <Topbar/>
+    <Commentpage/>
+    </>
   )
 }
 
