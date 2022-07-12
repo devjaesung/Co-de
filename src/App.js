@@ -3,7 +3,7 @@ import { Container } from '@mui/material'
 import TopBar from './components/Topbar';
 import Writepage from './components/writepage/Writepage';
 import Writetalk from './components/writepage/Writetalk';
-import TalkIn from './components/talkdetail/TalkIn';
+import TalkDetail from './components/talkdetail/TalkDetail';
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <TopBar />
       {/* <Writepage /> */}
       {/* <Writetalk /> */}
-      <TalkIn />
+      <TalkDetail />
     </Container>
   );
 }

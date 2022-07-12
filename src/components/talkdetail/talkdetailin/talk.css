@@ -1,0 +1,27 @@
+.d-profile{
+    width:35px;
+    height:35px;
+    border-radius:50%;
+}
+.d-profilename{
+    margin-left:10px;
+}  
+.d-talktitle{
+    width:40%;
+    border-bottom:1px solid #999;
+    font-size:18px;
+    color:#333;
+}
+#talktag{
+    color:#666;
+    margin-right:10px;
+}
+#talktag::before{
+    content:"#";
+}
+.d-talkprofile{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    vertical-align:middle;
+}
