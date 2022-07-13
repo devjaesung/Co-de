@@ -12,8 +12,9 @@ const TalkDetailIn = () => {
     setIconColor(iconColor === '#555' ? 'red':'#555');
   }
   return (
-    <Grid spacing={2} sx={{mx:"-24px"}}>
-      <Grid item sx={{width:"789px", mr:"20px", background:"#fff", p:"20px"}}>
+    // <Grid container spacing={2} sx={{mx:"-24px", mt:"0"}}>
+    //   <Grid item sx={{width:"789px", mr:"20px", background:"#fff", p:"20px"}}>
+    <>
         <Grid sx={{display:"flex", justifyContent:"space-between"}}>
           <Box>
             <img src="/images/profile.jpg" className="d-profile" alt="프로필사진" />
@@ -44,36 +45,10 @@ const TalkDetailIn = () => {
           <span>200</span>
         </Grid>
         <TalkComment />
-      </Grid>
-    </Grid>
+        </>   
+         //   </Grid>
+    // </Grid>
   )
 }
 
 export default TalkDetailIn
-
-{/* <>
-
-  <Grid>
-    <Grid item sx={{width:"789px"}}>
-      <Box sx={{background:"#fff", mr:"20px", p:"15px 20px"}}>
-        <Grid sx={{display:"flex", justifyContent:"space-between"}}>
-          <Box>
-            <img src="/images/profile.jpg" className="d-profile" alt="프로필사진" />
-            <span className="d-profilename">Nick Name</span>
-          </Box>
-          <Box>
-            <IconButton>
-              <MoreHorizIcon />
-            </IconButton>
-          </Box>
-        </Grid>
-        <Grid>ddfdf</Grid>
-      </Box>
-    </Grid>
-    <Grid item sx={{width:"274px"}}>
-      <Box sx={{background:"#fff"}}>
-        dsfdsfsd
-      </Box>
-    </Grid>
-  </Grid>
-</> */}

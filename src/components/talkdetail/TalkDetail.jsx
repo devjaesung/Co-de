@@ -2,6 +2,7 @@ import React from 'react'
 import { Container, Grid, IconButton } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import TalkDetail1 from './talkdetailin/TalkDetail1';
+import TalkDetail2 from './talkdetailin/TalkDetail2';
 
 const TalkIn = () => {
   return (
@@ -12,7 +13,14 @@ const TalkIn = () => {
             <ArrowBackIcon />
           </IconButton>
         </Grid>
-        <TalkDetail1 />
+        <Grid container spacing={2} sx={{width:"100%", mx:"-24px", mt:"0"}}>
+          <Grid item sx={{width:"789px", mr:"20px", background:"#fff", p:"20px"}}>
+            <TalkDetail1 />
+          </Grid>
+          <Grid item sx={{width:"274px", background:"#fff", p:"20px"}}>
+            <TalkDetail2 />
+          </Grid>
+        </Grid>
       </Container>
     </>
   )

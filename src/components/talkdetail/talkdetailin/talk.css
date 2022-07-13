@@ -25,3 +25,15 @@
     border-radius:50%;
     vertical-align:middle;
 }
+.d-commentprofile{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    vertical-align:middle;
+    margin:10px;
+}
+.d-comment{
+    font-size:15px;
+    display:inline-block;
+    width:465px;
+}

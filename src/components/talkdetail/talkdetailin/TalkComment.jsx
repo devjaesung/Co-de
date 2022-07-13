@@ -5,9 +5,30 @@ import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 
 const TalkComment = () => {
   const [iconColor, setIconColor] = useState('#555');
+  const [review, setReview] = useState('');
+  const [reviewArray, setReviewArray] = useState([
+    {id:"아이디1" ,review: review},
+  ]);
+
   const colorChange = (e) => {
     setIconColor(iconColor === '#555' ? 'red':'#555');
   }
+  
+  const handleTotal = (e) => {
+    setReview(e.target.value);
+  };
+
+  const handleEnter = (e) => {
+    if(e.key === 'Enter'){
+      e.preventDefault();
+      const reArray = [...reviewArray];
+      if(e.target.value !== ''){
+        reArray.push({id:'아이디1', review: review});
+      }
+      setReviewArray(reArray);
+      e.target.value = '';
+    }
+  };
   return (
     <>
       <Grid sx={{borderTop:"2px solid #cecece", borderBottom:"2px solid #cecece"}}>
@@ -15,14 +36,19 @@ const TalkComment = () => {
           <Box>
             <img src="/images/profile.jpg" className="d-talkprofile" alt="프로필사진" />
           </Box>
-          <Box sx={{mx:"15px"}}>
-            <OutlinedInput placeholder="댓글을 남겨주세요" 
+          <Box sx={{mx:"15px", pt:"3px"}}>
+            <OutlinedInput className="reviewInput" placeholder="댓글을 남겨주세요" 
+              onKeyPress = { e => {
+                handleEnter(e);
+              }}
+              onKeyUp = { e => {
+                handleTotal(e);
+              }}
               sx={{height:"35px", 
                    background:"#dedede", 
                    borderRadius:"10px",
-                   width:"450px"}} />
-          </Box>
-          <Box>
+                   width:"450px",
+                   mr:"15px"}} />
             <Button 
               sx={{height:"35px",
                    background:"#6667AB", 
@@ -33,7 +59,28 @@ const TalkComment = () => {
         </Grid>
       </Grid>
       <Grid>
-        <Grid sx={{display:"flex", py:"15px", px:"10px"}}>
+        {
+          reviewArray.map(data => (
+            <div className="d-flex" key={data.id}>
+                <img src="/images/profile.jpg" className="d-commentprofile" alt="프로필사진" />
+                <span className="d-comment">{data.review}</span>
+                <button onClick={colorChange} style={{border:"none", background:"none"}}>
+                  <span className="material-icons" style={{color:iconColor}}>favorite</span>
+                </button>
+                <button style={{border:"none", background:"none"}}>
+                  <span className="material-icons">chat_bubble_outline</span>
+                </button>
+            </div>
+          ))
+        }
+      </Grid>
+    </>
+  )
+}
+
+export default TalkComment
+
+{/* <Grid sx={{display:"flex", py:"15px", px:"10px"}}>
           <Box>
             <img src="/images/profile.jpg" className="d-talkprofile" alt="프로필사진" />
           </Box>
@@ -48,10 +95,4 @@ const TalkComment = () => {
             </IconButton>
             <ChatBubbleOutlineIcon sx={{color:"#555", verticalAlign:"-8px"}} />
           </Box>
-        </Grid>
-      </Grid>
-    </>
-  )
-}
-
-export default TalkComment
+        </Grid> */}
