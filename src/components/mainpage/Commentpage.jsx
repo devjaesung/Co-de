@@ -1,10 +1,25 @@
-import React from 'react'
+import React ,{useState}from 'react'
 import { Container,Box, Typography } from '@mui/material'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Avatar from '@mui/material/Avatar';
 import YouTube from 'react-youtube';
-
+import CommentRight from './CommentRight';
+import Data from './Data.json'
+import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
+import Favorite from '@mui/icons-material/Favorite';
+import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
+import CommentBox from './CommentBox';
+import CommentTest from './CommentTest';
 const Commentpage = () => {
+
+  const [btn, setBtn] = useState(true);
+  const [numBtn,setNumBtn] = useState(13);
+  const [chatCount,setchatCount] = useState(250);
+
+  function onClick(){
+      setBtn((current)=>!btn)
+  }
+
   return (
     <Container fixed>
          
@@ -15,7 +30,11 @@ const Commentpage = () => {
                 marginTop:'130px',
                 padding:'0px'
             }}>
-              <ArrowBackIcon  sx={{color:'#dddddd', fontSize:'32px', marginLeft:'5px',height:'30px'}}/> 
+              <ArrowBackIcon  sx={{color:'#dddddd', fontSize:'32px', marginLeft:'5px',height:'30px',cursor:'pointer'
+                              ,':hover': {
+                                color: 'black',
+                                textDecoration:'none'
+                              }}}/> 
                 <Box 
                 sx={{display:'flex'}}>
                 {/* 박스 왼쪽 */}
@@ -45,19 +64,59 @@ const Commentpage = () => {
                                 //이벤트 리스너 
                                 onEnd={(e)=>{e.target.stopVideo(0);}}/>
                         </Box>
-                        <Box sx={{width:798,display:'flex'}}>
-                            <Typography sx={{marginLeft:3}}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Typography>
+                        <Box sx={{width:698,display:'flex', paddingRight:'100px'}}>
+                            <Typography sx={{marginLeft:3 ,fontSize:'14px'}}>Lorem Ipsum is simply dummy text of the printing and typesetting industry It was popularised in the 1960s with the release of Letraset sheets containingLorem Ipsum is simply dummy text of the printing and typesetting industry It was popularised in the 1960s with the release of Letraset sheets containing</Typography>
                         </Box>
-                        <Box sx-={{display:'flex'}}>
-                            <Typography>#노래추천</Typography>
+                        <Box>
+                            <Typography sx={{color:"gray",fontSize:'12px'}}>#노래추천 #팝송</Typography>
+                            <Box sx={{diplay:'flex' ,borderBottom:'1px solid #888888', width:'798px'}}>
+                            <Typography sx={{marginTop:'5px', display:'flex',flexWrap:'nowrap'}}>
+                               <span onClick={onClick} cursor>
+                                  {btn? <FavoriteBorder sx={{color: "#e64a3d"}}/>:<Favorite sx={{color: "#e64a3d"}}/>}
+                               </span>
+                                <Typography sx={{
+                                    color: '#e64a3d',
+                                    fontSize: '14px',
+                                    fontWeight:'bold',
+                                    marginTop:0.4,
+                                    marginLeft: 0.3
+                                }}>{btn? numBtn:numBtn+1}</Typography>
+                                  <ChatBubbleOutlineIcon sx={{ fontSize : '20px', marginLeft: 2, marginTop: 0.5}}/>
+                                <Typography sx={{
+                                    fontSize: '14px',
+                                    fontWeight:'bold',
+                                    marginLeft: 0.5,
+                                    marginTop: 0.5
+                                }}>{chatCount}</Typography>
+                            </Typography>
                         </Box>
+                        {/* 댓글창 */}
+                                <CommentTest/>
+                    </Box>
+                        
                 </Box>
                 {/* 박스 오른쪽 */}
                 <Box
-                    sx={{width:265, paddingLeft:'20px'}}>
-                        <h2>Hello2</h2>
-                </Box>
-                </Box>
+                   sx={{
+                    backgroundColor: "#fff",
+                    width: "274px",
+                    marginLeft: "20px",
+                    border: "1px solid #dedede",
+                    boxShadow: "3px 3px 3px #ededed"
+                    }}>
+                    <Box
+                      sx={{
+                      width: "210px",
+                      color: "#6667aa"
+                      }}>
+                    </Box>
+                      {Data && Data.map(data=>{
+                      return(
+                      <CommentRight title={data.title} key={data.id} image={data.image} hits={data.hits} nickname={data.nickname} profile={data.profile}/>
+                      )
+                      })}
+                    </Box>
+              </Box>
         </Box>
     </Container>
   )

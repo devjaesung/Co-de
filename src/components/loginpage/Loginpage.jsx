@@ -143,7 +143,7 @@ export default function SignIn() {
                   ':hover': {
                     color: 'white',
                     textDecoration:'none'
-                  },
+                  }
                 }}>
                   비밀번호를 잊으셨나요?
                 </Button>
