@@ -1,19 +1,12 @@
 import React, { useState } from 'react'
-import { Grid, Box, OutlinedInput, Button, IconButton } from '@mui/material';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
-
+import { Grid, Box, OutlinedInput, Button } from '@mui/material';
+import CommentText from './CommentText';
 const TalkComment = () => {
-  const [iconColor, setIconColor] = useState('#555');
   const [review, setReview] = useState('');
   const [reviewArray, setReviewArray] = useState([
     {id:"아이디1" ,review: review},
   ]);
 
-  const colorChange = (e) => {
-    setIconColor(iconColor === '#555' ? 'red':'#555');
-  }
-  
   const handleTotal = (e) => {
     setReview(e.target.value);
   };
@@ -60,18 +53,13 @@ const TalkComment = () => {
       </Grid>
       <Grid>
         {
-          reviewArray.map(data => (
-            <div className="d-flex" key={data.id}>
-                <img src="/images/profile.jpg" className="d-commentprofile" alt="프로필사진" />
-                <span className="d-comment">{data.review}</span>
-                <button onClick={colorChange} style={{border:"none", background:"none"}}>
-                  <span className="material-icons" style={{color:iconColor}}>favorite</span>
-                </button>
-                <button style={{border:"none", background:"none"}}>
-                  <span className="material-icons">chat_bubble_outline</span>
-                </button>
-            </div>
-          ))
+          (reviewArray.map(data => {
+            return (
+            <CommentText 
+              key={data.id}
+              id={data.id}
+              review={data.review}  />)
+            }))
         }
       </Grid>
     </>
@@ -79,20 +67,3 @@ const TalkComment = () => {
 }
 
 export default TalkComment
-
-{/* <Grid sx={{display:"flex", py:"15px", px:"10px"}}>
-          <Box>
-            <img src="/images/profile.jpg" className="d-talkprofile" alt="프로필사진" />
-          </Box>
-          <Box sx={{mx:"15px"}}>
-            <p style={{width:"450px", margin:"0", fontSize:"14px"}}>
-              커다란 앞이 풍부하게 말이다. 품고 쓸쓸한 있는 무한한 열매를 주는 뜨거운지라, 그리하였는가? 바이며, 위하여서, 무엇을 품에 뿐이다.
-            </p>
-          </Box>
-          <Box>
-            <IconButton aria-label="heart" onClick={colorChange}>
-              <FavoriteIcon style={{color:iconColor}}/>
-            </IconButton>
-            <ChatBubbleOutlineIcon sx={{color:"#555", verticalAlign:"-8px"}} />
-          </Box>
-        </Grid> */}
