@@ -1,83 +1,71 @@
 import React from 'react'
 import Box from '@mui/material/Box'
+import VideoFeed from './VideoFeed';
+import VideoData from './Video.json'
 import RecommendBox from './RecommendBox'
 import RecommendData from './recommend.json'
-import YouTube from 'react-youtube'
-import { Typography } from '@mui/material'
 
 const FeedMainpage = () => {
   return (
-    <Box
-    sx={{
-        marginTop: "100px",
-        width: "1053px",
-        display: "flex"
-    }}>
-    {/* 오른쪽박스 전체 */}
-    <Box
-    sx={{
-        width: "755px",
-        height: "1000px",
-        backgroundColor: "#eee"
-    }}>
-        {/* 필터부분 */}
-        <Box
-        sx={{ height: "60px", backgroundColor: "#333", color: "#fff"}}>
-            필터
-        </Box>
-        {/* 피드부분 */}
-        <Box sx={{ background: "#898", height: "500px", boxShadow: "3px 3px 3px #ededed"}}>
-            <Box sx={{ height : "350px"}}>
-            <YouTube 
-                videoId='BPqhBrfWAg0'
-                opts={{
-                    width: "755px",
-                    height: "350px",
-                    playerVars: {
-                        autoplay: 1, //자동재생 O
-                        rel: 1, //관련 동영상 표시하지 않음 (근데 별로 쓸모 없는듯..)
-                        modestbranding: 1, // 컨트롤 바에 youtube 로고를 표시하지 않음
-                    },
-                }}
-                //이벤트 리스너 
-                onEnd={(e)=>{e.target.stopVideo(0);}}/>
-            </Box>
-            <Box sx={{height: "35px", background: "#eee", display: "flex", alignItems:"center"}}>
-                <Typography sx={{fontWeight:"bold", fontSize:"16px"}}>[4K] 루카스 그레이엄 (Lukas Graham) - Love Someone (Live In Seoul, 2019)</Typography>
-            </Box>
-        </Box>
-    </Box>
-
-
-    {/* 추천영상박스 시작*/}
-    <Box
-    sx={{
-        backgroundColor: "#fff",
-        width: "274px",
-        height: "885px",
-        marginLeft: "20px",
-        border: "1px solid #dedede",
-        boxShadow: "3px 3px 3px #ededed"
-    }}>
+    <>
+    <Box sx={{ background: "#eee", width: '100%', height: '100%', position : 'fixed', zIndex:-999, left:0}}></Box>
+        <Box sx={{ background: "#eee",width: "800px", height: "100px", zIndex: 998, position: "fixed", marginLeft: -1}}></Box>
         <Box
         sx={{
-            width: "210px",
-            height: "28px",
-            marginBottom:"25px",
-            marginLeft: "15px",
-            borderBottom: "1px solid #999999",
-            color: "#6667aa"
+            width: "1053px",
+            display: "flex"
         }}>
-            <h4>추천영상</h4>
+        {/* 오른쪽박스 전체 */}
+        <Box
+        sx={{
+            marginTop: "100px",
+            width: "755px"
+        }}>
+            {/* 필터부분 */}
+            <Box
+            sx={{ width:"755px",height: "60px",backgroundColor: "#333", color: "#fff", position: 'fixed', zIndex: 997}}>
+                필터
+            </Box>
+            {/* 피드부분 */}
+            {VideoData && VideoData.map(data=>{
+                return(
+                    <VideoFeed title={data.title} key={data.id} content={data.content} nickname={data.nickname} profile={data.profile} video={data.video} tag={data.tag}/>
+                )
+            })}
         </Box>
-        {RecommendData && RecommendData.map(data=>{
-            return(
-                <RecommendBox title={data.title} key={data.id} image={data.image} hits={data.hits} nickname={data.nickname} profile={data.profile}/>
-            )
-        })}
-    </Box>
-    </Box>
 
+
+        {/* 추천영상박스 시작*/}
+        <Box
+        sx={{
+            backgroundColor: "#fff",
+            width: "274px",
+            height: "885px",
+            marginTop:"100px",
+            marginLeft: "775px",
+            border: "1px solid #dedede",
+            boxShadow: "3px 3px 3px #ededed",
+            position: "fixed"
+        }}>
+            <Box
+            sx={{
+                width: "210px",
+                height: "28px",
+                marginBottom:"25px",
+                marginLeft: "15px",
+                borderBottom: "1px solid #999999",
+                color: "#6667aa"
+            }}>
+                <h4>추천영상</h4>
+            </Box>
+            {RecommendData && RecommendData.map(data=>{
+                return(
+                    <RecommendBox title={data.title} key={data.id} image={data.image} hits={data.hits} nickname={data.nickname} profile={data.profile}/>
+                )
+            })}
+        </Box>
+        </Box>
+    </>        
   )
 }
 

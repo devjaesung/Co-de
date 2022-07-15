@@ -3,12 +3,13 @@ import Box from '@mui/material/Box'
 import Avatar from '@mui/material/Avatar';
 import { Typography } from '@mui/material';
 
+
 const RecommendBox = (props) => {
   return (
     <Box
         sx={{
             height: "200px",
-            marginBottom: "1px"
+            marginBottom: "2.5px"
         }}>
             <Box
             sx={{
@@ -19,7 +20,10 @@ const RecommendBox = (props) => {
             <Box
             sx={{
                 marginTop: "-22px",
-                height: "20px"
+                marginLeft: "3px",
+                height: "20px",
+                textOverflow : "ellipsis",
+                whiteSpace: 'nowrap'
             }}>
             <h5>{props.title}</h5>
             </Box>
@@ -28,6 +32,7 @@ const RecommendBox = (props) => {
                 height: "20px",
                 fontSize: "11px",
                 marginTop:"-10px",
+                marginLeft: "3px",
                 color: "#999"
             }}>
                 <p>조회수 : {props.hits}</p>
