@@ -63,7 +63,7 @@ const TalkContent = (props) => {
           {props.content}
       </Typography>
       <Typography variant='body2' component='p' fontSize={12} sx={{color:"#666", marginTop: 3}}>
-          #{props.hashtag}
+          {props.hashtag}
         </Typography>
         <Box sx={{float:"right",display:"flex",alignItems:"flex-end"}} marginRight={2}>
          <Avatar alt="profile image" src="images/profile.jpg" sx={{width:"24px",height:"24px", marginRight:"5px"}}/>
