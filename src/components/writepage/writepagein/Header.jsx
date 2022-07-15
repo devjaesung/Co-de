@@ -3,21 +3,22 @@ import { Grid, IconButton } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import SendIcon from '@mui/icons-material/Send';
 
-export default function WriteHeader() {
+const Header = () => {
   return (
-    <Grid container spacing={2}>
-      <Grid item xs={6}>
-        <IconButton aria-label="go back"
-          sx={{color:"#6667AB", marginLeft:"30px"}}>
+    <Grid container 
+      sx={{justifyContent:"space-between"}}>
+      <Grid item>
+        <IconButton aria-label="go back" sx={{color:"#6667AB"}}>
           <ArrowBackIcon />
         </IconButton>
       </Grid>
-      <Grid item xs={6}>
-        <IconButton aria-label="send data"
-          sx={{color:"#6667AB", float:"right", marginRight:"30px"}}>
+      <Grid item>
+        <IconButton aria-label="send data" sx={{color:"#6667AB"}}>
           <SendIcon />
         </IconButton>
       </Grid>
     </Grid>
   )
 }
+
+export default Header

@@ -1,17 +1,16 @@
 import React from 'react'
 import { Container, Divider } from '@mui/material';
-import WriteHeader from './writepagein/WriteHeader';
+import Header from './writepagein/Header';
 import WriteForm from './writepagein/WriteForm';
-
 
 const Writepage = () => {
   return (
-    <Container
+    <Container maxWidth="md" 
       sx={{background:"#fff",
            marginTop:"55px",
            padding:"30px 0"}}>
-      <WriteHeader />
-      <Divider sx={{border:"1px solid rgba(0, 0, 0, 0.12)"}} />
+      <Header />
+      <Divider sx={{border:"1px solid #ddd"}} />
       <WriteForm />
     </Container>
   )

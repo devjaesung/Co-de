@@ -12,7 +12,7 @@
         { "id": 10, "category": "클래식"},
         { "id": 11, "category": "POP"}
     ],
-    "thema": [
+    "tags": [
         { "id": 1, "category": "기분전환"},
         { "id": 2, "category": "힐링"},
         { "id": 3, "category": "드라이브"},
