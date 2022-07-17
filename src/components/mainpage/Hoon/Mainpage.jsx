@@ -1,6 +1,6 @@
 import React from 'react'
 import Commentpage from './Commentpage'
-import Topbar from'../Topbar'
+import Topbar from'../../Topbar'
 
 const Mainpage = () => {
   return (
