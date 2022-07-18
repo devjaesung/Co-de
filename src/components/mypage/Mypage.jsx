@@ -3,10 +3,13 @@ import Box from '@mui/material/Box'
 import LeftBox from './LeftBox';
 import RightBox from './RightBox';
 import EditBox from './EditBox';
+import TopBar from '../Topbar';
 
 
 const Mypage = () => {
   return (
+    <>
+    <TopBar/>
     <Box
     sx={{
         width: '100%',
@@ -25,6 +28,7 @@ const Mypage = () => {
     <RightBox />
   
   </Box>
+  </>
   )
 }
 

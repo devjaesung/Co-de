@@ -1,6 +1,7 @@
 import {React,useState} from 'react'
 import { Box, Avatar, Typography, Divider, IconButton, Menu, MenuItem } from '@mui/material'
 import {  Chat, MoreHoriz,ThumbUpAlt,ThumbUpOffAlt } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
 
 const ITEM_HEIGHT = 48;
 
@@ -24,7 +25,9 @@ const TalkContent = (props) => {
 
 
   return (
+   
     <Box sx={{backgroundColor: "#fff",boxShadow: '0 7px 9px -7px gray', marginBottom:'10px', paddingLeft:'5px'}}>
+      {/*탭 리스트 */}
       <Box sx={{marginRight: 2, float:"right"}}>
       <IconButton
         aria-label="more"
@@ -53,7 +56,7 @@ const TalkContent = (props) => {
         <MenuItem onClick={handleClose}>신고하기</MenuItem>
       </Menu>
     </Box>
-
+    <Link to="TalkDetail">
       <Typography variant='subtitle1' component="h2" fontSize={16} fontWeight={"bold"} >
         {props.title}
         <span style={{color:"#999",fontSize:"10px", fontWeight:"regular", marginLeft:"5px"}}>{props.day}일전</span>
@@ -65,10 +68,13 @@ const TalkContent = (props) => {
       <Typography variant='body2' component='p' fontSize={12} sx={{color:"#666", marginTop: 3}}>
           {props.hashtag}
         </Typography>
+        </Link>
+        <Link to="/Profile">
         <Box sx={{float:"right",display:"flex",alignItems:"flex-end"}} marginRight={2}>
          <Avatar alt="profile image" src="images/profile.jpg" sx={{width:"24px",height:"24px", marginRight:"5px"}}/>
          <Typography variant='body2' component="p" >Nickname</Typography>
         </Box>
+        </Link>
         
         <Typography variant='body2' component="p" marginTop={1}>
 
@@ -81,6 +87,7 @@ const TalkContent = (props) => {
         </Typography>
 
     </Box>
+
   )
 }
 

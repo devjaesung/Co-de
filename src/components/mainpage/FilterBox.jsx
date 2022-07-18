@@ -82,8 +82,8 @@ const FilterBox = (props) => {
 
   return (
     <Box>
-    <span style={{width:'2000px',height:'55px',zIndex:"998",position:'fixed',top:"40px",left:"0px",backgroundColor:"#ddd"}}></span>
-    <Box sx={{backgroundColor: "#fff",boxShadow: '0 7px 9px -7px gray', width:"788px",zIndex:"777",position:'fixed',top:'95px'}}>
+    <span style={{width:'2000px',height:'55px',zIndex:"988",position:'fixed',top:"40px",left:"0px",backgroundColor:"#eee"}}></span>
+    <Box width={props.width} sx={{backgroundColor: "#fff",boxShadow: '0 7px 9px -7px gray',zIndex:"999",position:'fixed',top:'95px'}}>
             <FBtn text="All"/>
             <Btn text="#노래 추천"/>
             <Btn text="#정보공유"/>

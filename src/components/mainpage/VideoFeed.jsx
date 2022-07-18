@@ -10,6 +10,7 @@ import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import Avatar from '@mui/material/Avatar';
+import {Link} from 'react-router-dom'
 
 const VideoFeed = (props) => {
     // 좋아요 하트
@@ -29,7 +30,7 @@ const VideoFeed = (props) => {
       setAnchorEl(null);
     };
   return (
-    <Box sx={{ height: "520px", boxShadow: "3px 3px 5px #999", marginTop: '60px', marginBottom: '10px', background: "#fff" }}>
+    <Box sx={{ height: "520px", boxShadow: "0 7px 9px -7px gray", marginTop: '60px', marginBottom: '10px', background: "#fff" }}>
         <Box sx={{ height : "350px"}}>
             <YouTube 
                 videoId={props.video}
@@ -45,7 +46,9 @@ const VideoFeed = (props) => {
                 //이벤트 리스너 
                 onEnd={(e)=>{e.target.stopVideo(0);}}/>
         </Box>
+        <Link to="FeedDetail">
         <Box sx={{height: "35px",display: "flex", alignItems:"center"}}>
+            
             <Typography sx={{fontWeight:"bold", fontSize:"16px", marginLeft:"10px"}}>{props.title}</Typography>
             <IconButton sx={{marginLeft: 'auto'}}
                 aria-label="more"
@@ -71,6 +74,7 @@ const VideoFeed = (props) => {
         <Box sx={{ height: "60px", padding:"2px"}}>
             <Typography sx={{margin:"0px 10px", fontSize:"13px"}}>{props.content}</Typography>
         </Box>
+        </Link>
         <Box sx={{height: '30px', display: 'flex', padding: '10px 0px 0px 10px'}}>
             <span onClick={onClick} cursor>
                 {btn? <FavoriteBorder sx={{color: "#e64a3d"}}/>:<Favorite sx={{color: "#e64a3d"}}/>}
@@ -94,8 +98,10 @@ const VideoFeed = (props) => {
         </Box>
         <Box sx={{ height: '30px', paddingLeft: '10px', display : 'flex', alignItems: 'center'}}>
             <Typography sx={{ color: '#939393', fontSize: '13px'}}>{props.tag}</Typography>
+            <Link to="Profile">
             <Typography sx={{marginRight:"6px", fontSize:"13px", fontWeight:"bold", color: "#333", marginLeft:'auto'}}>{props.nickname}</Typography> 
             <Avatar alt="Avatar" src={props.profile} sx={{ width: 19, height: 19, border: "1px solid #666", marginRight: "3px"}}/>
+            </Link>
         </Box>
     </Box>
   )

@@ -4,10 +4,11 @@ import SlideshowIcon from '@mui/icons-material/Slideshow';
 import ArticleIcon from '@mui/icons-material/Article';
 import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
 import SlideshowTwoToneIcon from '@mui/icons-material/SlideshowTwoTone';
+import { Link } from 'react-router-dom';
 
 const SwitchBox = () => {
 
-    const [active,setActive] = useState(true)
+    const [active,setActive] = useState(false)
     const SwitchVideo = () =>{
         setActive(true)
     }
@@ -16,14 +17,16 @@ const SwitchBox = () => {
     }
 
   return (
-    <Box sx={{ width:"100px",zIndex:"999",position:'fixed',top:"120px",left:"120px",display:"flex"}}>
-        <IconButton onClick={SwitchTalk}>
+    <Box sx={{ width:"100px",zIndex:"999",position:'fixed',top:"120px",left:"80px",display:"flex"}}>
+        <Link to='/' onClick={SwitchTalk}><IconButton>
             {active? <SlideshowIcon/>:<SlideshowTwoToneIcon color="secondary"/>}
         </IconButton>
+        </Link>
         <Divider orientation="vertical" flexItem/>
-        <IconButton onClick={SwitchVideo}>
+        <Link to='/TalkMain' onClick={SwitchVideo}><IconButton>
         {active? <ArticleIcon color='secondary'/>:<ArticleOutlinedIcon/>}
         </IconButton>
+        </Link>
     </Box>
   )
 }

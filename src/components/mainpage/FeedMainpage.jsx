@@ -4,6 +4,7 @@ import VideoFeed from './VideoFeed';
 import VideoData from './Video.json'
 import RecommendBox from './RecommendBox'
 import RecommendData from './recommend.json'
+import FilterBox from './FilterBox'
 
 const FeedMainpage = () => {
   return (
@@ -19,13 +20,10 @@ const FeedMainpage = () => {
         <Box
         sx={{
             marginTop: "100px",
-            width: "755px"
+            width: "755px",
         }}>
             {/* 필터부분 */}
-            <Box
-            sx={{ width:"755px",height: "60px",backgroundColor: "#333", color: "#fff", position: 'fixed', zIndex: 997}}>
-                필터
-            </Box>
+            <FilterBox width="755px"/>
             {/* 피드부분 */}
             {VideoData && VideoData.map(data=>{
                 return(

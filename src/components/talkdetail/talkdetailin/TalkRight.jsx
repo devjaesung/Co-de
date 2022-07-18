@@ -1,11 +1,11 @@
 import React from 'react'
 import { Grid, Box, Divider, List, ListItem, ListItemButton ,ListItemText } from '@mui/material';
 
-const TalkRight = () => {
+const TalkRight = (props) => {
   return (
     <Grid item 
+      left={props.space}
       sx={{position:"fixed",
-           left:"1215px",
            width:"274px", 
            height:"atuo",
            background:"#fff",
