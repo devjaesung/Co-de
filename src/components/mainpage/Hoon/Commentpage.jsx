@@ -4,12 +4,13 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Avatar from '@mui/material/Avatar';
 import YouTube from 'react-youtube';
 import CommentRight from './CommentRight';
-import Data from './Data.json'
+import Data from'./Data.json'
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
-import CommentBox from './CommentBox';
 import CommentTest from './CommentTest';
+
+
 const Commentpage = () => {
 
   const [btn, setBtn] = useState(true);

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Box, Button, TextField } from '@mui/material';
 import CommentList from './CommentList';
 import styled from "styled-components";
+
 const White = styled(TextField)`
   & label.Mui-focused {
     color: black;
@@ -12,6 +13,7 @@ const White = styled(TextField)`
     }
   }
 `;
+
 
 export default function CommentTest() {
     let [userName] = useState('hacker');
@@ -27,11 +29,11 @@ export default function CommentTest() {
   return (
     <Box >  
         <Box sx={{display:'flex', alignItems:'center'}}>{userName}
-        <White sx={{ width: '80%',
+        <White sx={{ width: '80%', marginLeft:2,
                     '& fieldset':{
-                     height:'60px',
+                     height:'40px',
                      borderRadius:'25px',
-                     backgroundColor:''
+                     marginTop:"10px"
                     }}}
             placeholder='댓글을 남겨주세요.'
             onChange={e =>{
@@ -43,7 +45,13 @@ export default function CommentTest() {
                  : setIsVaild(false)
             }}
             value={comment}/>
-            <Button
+            <Button sx={{ color:'#8b8b8d',marginLeft:'10px',backgroundColor:'#dddddd',
+                          '&:Hover': {
+                            color:'White',
+                            backgroundColor:'#6667AB',
+
+                          },
+                        }}
                 className={
                     comment.length > 0
                     ? 'submitCommentActive'
