@@ -5,6 +5,9 @@ import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import IconButton from '@mui/material/IconButton';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
 
 const MyTalkFeed = (props) => {
@@ -16,6 +19,15 @@ const MyTalkFeed = (props) => {
       setBtn((current)=>!btn)
   }
 
+  //더보기 버튼
+    const [anchorEl, setAnchorEl] = useState(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+      setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+      setAnchorEl(null);
+    };
   return (
     <Box sx={{ width: 960, height: 160, backgroundColor: '#fff', border: 1, borderColor: '#949494', marginBottom: 2}}>
 
@@ -36,7 +48,26 @@ const MyTalkFeed = (props) => {
                 marginLeft: 2,
             }}>1일전</Typography>
         </Box>
-        <MoreHorizIcon sx={{marginLeft:'auto', color: '#a7a7a7'}}></MoreHorizIcon>
+            <IconButton sx={{marginLeft: 'auto'}}
+                aria-label="more"
+                id="long-button"
+                aria-controls={open ? 'long-menu' : undefined}
+                aria-expanded={open ? 'true' : undefined}
+                aria-haspopup="true"
+                onClick={handleClick}
+            >
+                <MoreHorizIcon sx={{color: '#a7a7a7', fontSize: "30px", ':hover': {color: '#333'}}} />
+            </IconButton>
+            <Menu
+                id="long-menu"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+            >
+                <MenuItem onClick={handleClose}>수정하기</MenuItem>
+                <MenuItem onClick={handleClose}>공유하기</MenuItem>
+                <MenuItem onClick={handleClose}>삭제하기</MenuItem>
+            </Menu>
     </Box>
     <Box sx={{ width: 700, height: 70, marginLeft: 4, marginTop: 1.6}}>
         <Typography sx={{

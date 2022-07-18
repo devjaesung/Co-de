@@ -1,23 +1,23 @@
 [
     {
         "id" : 1,
-        "title" : "Rolling in the Deep",
+        "title" : "Rolling in the Deep - Adele",
         "image" : "images/profile.jpg"
     },
     {
         "id" : 2,
-        "title" : "Rolling in the Deep2",
-        "image" : "images/singer01.jpg"
+        "title" : "Coldplay - Viva La Vida",
+        "image" : "images/singer04.jpg"
     },
     {
         "id" : 3,
-        "title" : "Rolling in the Deep3",
-        "image" : "images/singer03.jpg"
+        "title" : "데이먼스 이어 - yours",
+        "image" : "images/singer05.jpg"
     },
     {
         "id" : 4,
-        "title" : "Rolling in the Deep4",
-        "image" : "images/singer02.jpg"
+        "title" : "백예린 - 우주를 건너",
+        "image" : "images/singer06.jpg"
     },
     {
         "id" : 5,
