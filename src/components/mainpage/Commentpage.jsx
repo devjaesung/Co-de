@@ -4,13 +4,13 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Avatar from '@mui/material/Avatar';
 import YouTube from 'react-youtube';
 import CommentRight from './CommentRight';
-import Data from'./Data.json'
+import Data from './data.json'
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
+import CommentBox from './CommentBox';
 import CommentTest from './CommentTest';
-
-
+import {Link} from 'react-router-dom';
 const Commentpage = () => {
 
   const [btn, setBtn] = useState(true);
@@ -31,11 +31,12 @@ const Commentpage = () => {
                 marginTop:'130px',
                 padding:'0px'
             }}>
+              <Link to="/">
               <ArrowBackIcon  sx={{color:'#dddddd', fontSize:'32px', marginLeft:'5px',height:'30px',cursor:'pointer'
                               ,':hover': {
                                 color: 'black',
                                 textDecoration:'none'
-                              }}}/> 
+                              }}}/></Link>
                 <Box 
                 sx={{display:'flex'}}>
                 {/* 박스 왼쪽 */}
