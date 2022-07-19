@@ -1,9 +1,10 @@
 import React from 'react'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { Avatar, Typography } from '@mui/material';
 import LoyaltyIcon from '@mui/icons-material/Loyalty';
 import AudioFileIcon from '@mui/icons-material/AudioFile';
+import {Link} from 'react-router-dom'
 
 const LeftBox = () => {
   return (
@@ -30,10 +31,12 @@ const LeftBox = () => {
             alignItems:'center'
         }}                                                                        
         >
-            <h2>NickName</h2>
+            <Typography sx={{fontSize: '25px', fontWeight: 'bold', flex: 8}}>
+              NickName</Typography>
+            <Link to="/MyEditpage">
             <Button
             sx={{
-               marginLeft: "auto",
+               marginLeft: 'auto',
                backgroundColor: '#dddddd',
                color: '#8b8b8d',
                fontWeight: 'bold',
@@ -45,6 +48,7 @@ const LeftBox = () => {
             >
             수정
             </Button>
+            </Link>
         </Box>
       <Box
         sx={{
@@ -102,11 +106,9 @@ const LeftBox = () => {
         justifyContent: 'center',
         alignItems: 'center'
       }}>
-       <AccountCircleIcon
-        sx={{
-          fontSize: '150px'
-        }}
-        color="disabled"
+       <Avatar 
+        src={"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} 
+        style={{margin:'20px', width: '120px', height:'120px'}} 
         />
       </Box>
 

@@ -1,13 +1,35 @@
-import React from 'react'
+import {React, useState, useRef} from 'react'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { Avatar } from '@mui/material';
 import LoyaltyIcon from '@mui/icons-material/Loyalty';
 import AudioFileIcon from '@mui/icons-material/AudioFile';
 import Input from '@mui/material/Input';
+import {Link} from 'react-router-dom'
 
 const ariaLabel = { 'aria-label': 'description' };
 const EditBox = () => {
+  const [Image, setImage] = useState("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png")
+  const fileInput = useRef(null)
+
+  const [File, setFile] = useState('')
+  const onChange = (e) => {
+    if(e.target.files[0]){
+        setFile(e.target.files[0])
+    }else{ //업로드 취소할 시
+        setImage("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png")
+    return
+    }
+    //화면에 프로필 사진 표시
+    const reader = new FileReader();
+    reader.onload = () => {
+        if(reader.readyState === 2){
+           setImage(reader.result)
+          }
+      }
+      reader.readAsDataURL(e.target.files[0])
+    }
+
   return (
     <Box
     sx={{
@@ -36,26 +58,29 @@ const EditBox = () => {
             component="form"
             sx={{
                 '& > :not(style)': { m: 1 },
+                flex:8
             }}
             noValidate
             autoComplete="off"
             >
-            <Input defaultValue="Nick Name" inputProps={ariaLabel} />
+            <Input defaultValue="NickName" inputProps={ariaLabel} />
             </Box>
+            <Link to="/Mypage">
             <Button
             sx={{
-               marginLeft: "auto",
-               backgroundColor: '#dddddd',
-               color: '#8b8b8d',
+               marginLeft: 'auto',
+               backgroundColor: '#6667AB',
+               color: 'white',
                fontWeight: 'bold',
                ':hover': {
-                bgcolor: '#6667AB', 
-                color: 'white',
+                bgcolor: '#dddddd', 
+                color: '#8b8b8d',
                }
             }}
             >
-            수정
+            확인
             </Button>
+            </Link>
         </Box>
       <Box
         sx={{
@@ -113,14 +138,18 @@ const EditBox = () => {
         justifyContent: 'center',
         alignItems: 'center'
       }}>
-       <AccountCircleIcon
-        sx={{
-          fontSize: '150px'
-        }}
-        color="disabled"
-        >
-        <input type="file" name="file" onChange={null}/>    
-        </AccountCircleIcon>
+       <Avatar 
+        src={Image} 
+        style={{margin:'20px', width: '120px', height:'120px', cursor: 'pointer'}} 
+        onClick={()=>{fileInput.current.click()}}/>
+         <input 
+            type='file' 
+            style={{display:'none'}}
+            accept='image/jpg,impge/png,image/jpeg' 
+            name='profile_img'
+            onChange={onChange}
+            ref={fileInput}
+          />
       </Box>
 
       <Box

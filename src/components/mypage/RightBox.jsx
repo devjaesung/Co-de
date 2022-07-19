@@ -62,7 +62,8 @@ export default function BasicTabs() {
       borderColor: '#e6e6e6',
       backgroundColor : '#fff',
       marginTop: 10,
-      marginLeft: 20
+      marginLeft: 20,
+      zIndex: 990
     }}
   >
         <Box

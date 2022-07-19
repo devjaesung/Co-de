@@ -8,6 +8,7 @@ import Mainpage from './components/mainpage/Mainpage';
 import Writepage from './components/writepage/Writepage';
 import Writetalk from './components/writepage/Writetalk';
 import Mypage from './components/mypage/Mypage';
+import MyEditpage from './components/mypage/MyEditpage';
 export default function App() {
   
   return (
@@ -20,6 +21,7 @@ export default function App() {
           <Route path='/Writepage' element={<Writepage/>}/>
           <Route path='/Writetalk' element={<Writetalk/>}/>
           <Route path='/Mypage' element={<Mypage/>}/>
+          <Route path='/MyEditpage' element={<MyEditpage/>}/>
         </Routes>
     </Container>
   )

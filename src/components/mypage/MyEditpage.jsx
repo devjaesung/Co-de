@@ -1,11 +1,9 @@
 import React from 'react'
 import Box from '@mui/material/Box'
-import LeftBox from './LeftBox';
+import EditBox from './EditBox'
 import RightBox from './RightBox';
 import TopBar from '../Topbar';
-
-
-const Mypage = () => {
+const MyEditpage = () => {
   return (
     <>
     <TopBar/>
@@ -19,10 +17,11 @@ const Mypage = () => {
         top: 55,
         paddingTop: 10,
         paddingLeft: 10,
-        backgroundColor: '#f5f5f5'
+        backgroundColor: '#555',
+        zIndex: 999
     }}
     >
-    <LeftBox />
+    <EditBox />
     <RightBox />
   
   </Box>
@@ -30,4 +29,4 @@ const Mypage = () => {
   )
 }
 
-export default Mypage
+export default MyEditpage
