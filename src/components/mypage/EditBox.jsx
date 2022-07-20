@@ -6,9 +6,32 @@ import LoyaltyIcon from '@mui/icons-material/Loyalty';
 import AudioFileIcon from '@mui/icons-material/AudioFile';
 import Input from '@mui/material/Input';
 import {Link} from 'react-router-dom'
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import MenuItem from '@mui/material/MenuItem';
+import Menu from '@mui/material/Menu';
+
 
 const ariaLabel = { 'aria-label': 'description' };
-const EditBox = () => {
+
+// chip option
+const options = [
+  '발라드',
+  '댄스',
+  '랩/힙합',
+  'R&B/Soul',
+  '인디음악',
+  '록/메탈',
+  '트로트',
+  '포크/블루스',
+  'OST',
+  '클래식'
+];
+
+const EditBox = (props) => {
+
+  // 프로필 사진 추가
   const [Image, setImage] = useState("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png")
   const fileInput = useRef(null)
 
@@ -29,6 +52,23 @@ const EditBox = () => {
       }
       reader.readAsDataURL(e.target.files[0])
     }
+
+    // option
+      // const [anchorEl, setAnchorEl] = React.useState(null);
+      // const [selectedIndex, setSelectedIndex] = React.useState(1);
+      // const open = Boolean(anchorEl);
+      // const handleClickListItem = (event) => {
+      //   setAnchorEl(event.currentTarget);
+      // };
+
+      // const handleMenuItemClick = (event, index) => {
+      //   setSelectedIndex(index);
+      //   setAnchorEl(null);
+      // };
+
+      // const handleClose = () => {
+      //   setAnchorEl(null);
+      // };
 
   return (
     <Box
@@ -160,6 +200,46 @@ const EditBox = () => {
         display: 'flex',
         justifyContent: 'space-evenly'
       }}>
+      
+        {/* <List
+          component="nav"
+          aria-label="Device settings"
+          sx={{ bgcolor: 'background.paper', width: '70px', height: '20px' }}
+        >
+          <ListItem
+            button
+            id="lock-button"
+            aria-haspopup="listbox"
+            aria-controls="lock-menu"
+            aria-label="when device is locked"
+            aria-expanded={open ? 'true' : undefined}
+            onClick={handleClickListItem}
+          >
+            <ListItemText
+              primary={options[selectedIndex]}
+            />
+          </ListItem>
+        </List>
+          <Menu
+            id="lock-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            MenuListProps={{
+              'aria-labelledby': 'lock-button',
+              role: 'listbox',
+            }}
+          >
+            {options.map((option, index) => (
+              <MenuItem
+                key={option}
+                selected={index === selectedIndex}
+                onClick={(event) => handleMenuItemClick(event, index)}
+              >
+                {option}
+              </MenuItem>
+            ))}
+          </Menu> */}
           <Box
           sx={{
             width: 70,
