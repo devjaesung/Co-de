@@ -79,7 +79,7 @@ export default function SignIn() {
             marginBottom:'20px',
             marginTop:'50px',
           }}>
-          <a href="Loginpage"><img src="images/test.svg" alt="logo" /></a>
+          <Link to="/"> <a href="Loginpage"><img src="images/test.svg" alt="logo" /></a></Link> 
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <WhiteBorderTextField

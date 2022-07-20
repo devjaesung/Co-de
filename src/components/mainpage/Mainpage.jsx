@@ -5,7 +5,7 @@ import MainTalk from './MainTalk'
 import Topbar from'../Topbar'
 import SwitchBox from './SwitchBox'
 import TalkDetail from '../talkdetail/TalkDetail'
-import Commentpage from './Commentpage'
+import Commentpage from './Hoon/Commentpage'
 
 const Mainpage = () => {
   return (

@@ -3,19 +3,21 @@ import { Container,Box, Typography } from '@mui/material'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Avatar from '@mui/material/Avatar';
 import YouTube from 'react-youtube';
-import CommentRight from './CommentRight';
-import Data from './data.json'
+import RecommendData from '../recommend.json'
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
-import CommentBox from './CommentBox';
+import RecommendBox from '../RecommendBox';
 import CommentTest from './CommentTest';
 import {Link} from 'react-router-dom';
-const Commentpage = () => {
+import Test from './Test'
+
+
+const Commentpage = (history) => {
 
   const [btn, setBtn] = useState(true);
   const [numBtn,setNumBtn] = useState(13);
-  const [chatCount,setchatCount] = useState(250);
+  const [chatCount , setchatCount] = useState(0);
 
   function onClick(){
       setBtn((current)=>!btn)
@@ -31,8 +33,9 @@ const Commentpage = () => {
                 marginTop:'130px',
                 padding:'0px'
             }}>
-              <Link to="/">
-              <ArrowBackIcon  sx={{color:'#dddddd', fontSize:'32px', marginLeft:'5px',height:'30px',cursor:'pointer'
+              <Link to="/Test">
+              <ArrowBackIcon  onClick={() => history.goBack()}
+                              sx={{color:'#dddddd', fontSize:'32px', marginLeft:'5px',height:'30px',cursor:'pointer'
                               ,':hover': {
                                 color: 'black',
                                 textDecoration:'none'
@@ -112,9 +115,9 @@ const Commentpage = () => {
                       color: "#6667aa"
                       }}>
                     </Box>
-                      {Data && Data.map(data=>{
+                      {RecommendData && RecommendData.map(data=>{
                       return(
-                      <CommentRight title={data.title} key={data.id} image={data.image} hits={data.hits} nickname={data.nickname} profile={data.profile}/>
+                      <RecommendBox title={data.title} key={data.id} image={data.image} hits={data.hits} nickname={data.nickname} profile={data.profile}/>
                       )
                       })}
                     </Box>

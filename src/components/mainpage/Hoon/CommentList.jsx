@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import { Box, Typography } from '@mui/material'
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
+import PersonIcon from '@mui/icons-material/Person';
 
 const CommentList = (props) => {
     const [btn, setBtn] = useState(true);
@@ -14,7 +15,7 @@ const CommentList = (props) => {
   
   return (
     <Box sx={{display:'flex', alignItems:'center' ,width:'598px'}}>
-        <Typography sx={{margin:3}}>{props.userName}</Typography>
+        <Typography sx={{}}><PersonIcon/></Typography>
         <Box sx={{margin:3}}>{props.userComment}</Box>
                             <Typography sx={{display:'flex',flexWrap:'nowrap',marginLeft:'auto'}}>
                                <span onClick={onClick} cursor>
