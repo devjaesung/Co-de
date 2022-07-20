@@ -1,46 +1,17 @@
-import React, { useState } from 'react'
-import { Box, FormGroup, FormLabel, Input, Divider, Button, TextareaAutosize } from '@mui/material'
+import React from 'react'
+import { Box, FormGroup, FormLabel, Input, Divider, TextareaAutosize } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add';
 import GenreList from '../writepagein2/GenreList';
-import TagsList from '../writepagein2/TagsList';
+import Tags from '../writepagein2/Tags'
 import data from '../db/data.json';
 
 const WriteForm = () => {
-  const [toDo, setToDo] = useState('');
-  const [toDos, setToDos] = useState([]);
 
-  const onChange = (event) => {
-    setToDo(event.target.value);
-  };
-
-  const onSubmit = (event) => {
-    event.preventDefault();
-    if(toDo === ""){
-      return;
-    }
-    setToDo("");
-    setToDos(currentArray => [toDo, ...currentArray]);
-  }
-  console.log(toDos);
-  // const textChange = (e) => {
-  //   e.preventDefault();
-  //   setTextIn(e.target.value);
-  // };
-  // const ti = textIn;
-  // console.log(ti);
-
-  // const addClick = (e) => {
-  //   e.preventDefault();
-  //   const addSpace = document.getElementById('addSpace');
-  //   const newSpan = document.createElement('span');
-  //   newSpan.innerHTML = 
-  //     "<label id='tagWrap'><input type='checkbox' id='tagCheck' value><span id='tagName'>태그</span></label>";
-  //   addSpace.appendChild(newSpan);
-  // };
 
   return (
-    <form action="/post">
+    <>
       <Box className="d-basebox">
+        <form>
         <FormGroup>
           <FormLabel htmlFor="file_upload" sx={{margin:"0 auto"}}>
             <AddIcon 
@@ -50,8 +21,10 @@ const WriteForm = () => {
                    ml:"10px"}} />
           </FormLabel>
         </FormGroup>
+        </form>
       </Box>
       <Box className="d-basebox">
+        <form>
         <Divider>곡정보</Divider>
         <FormGroup row sx={{p:"10px"}}>
           <Input type="text" placeholder="노래 제목을 입력하세요" 
@@ -70,40 +43,11 @@ const WriteForm = () => {
             ))
           }
         </FormGroup>
-
-        <Divider># 태그</Divider>
-        <Box id="addbox" sx={{pt:"10px", px:"10px"}}>
-          <form onSubmit={onSubmit}>
-          <Input type="text" placeholder="태그를 추가해보세요" id="addinput" onChange={onChange} value={toDo} />
-          <Button type="submit" variant="contained"
-            sx={{height:"30px",
-                 pt:"10px",
-                 ml:"10px",
-                 background:"#6667AB"}}>추가
-          </Button>
-          </form>
-          {
-            toDos.map((item, index) => (
-              <span key={index}>
-              <label id="tagWrap">
-                <input type="checkbox" id="tagCheck" value={item} />
-                <span id="tagName">{item}</span>  
-              </label>
-              </span>
-            ))
-          }
-        </Box>
-        <FormGroup row sx={{p:"10px"}} id="addSpace">
-          {
-            data.tags.map(td => (
-              <TagsList key={td.id}
-              category={td.category} />
-            ))
-          }
-
-        </FormGroup>
+        </form>
+        <Tags />
       </Box>
       <Box className="d-basebox">
+        <form>
         <Divider>글내용</Divider>
         <FormGroup sx={{px:"10px"}}>
           <Input type="text" placeholder="제목을 입력하세요" sx={{my:"10px"}} />
@@ -113,8 +57,9 @@ const WriteForm = () => {
                     height:"200px",
                     padding:"10px"}} />
         </FormGroup>
+        </form>
       </Box>
-    </form>
+    </>
   )
 }
 
