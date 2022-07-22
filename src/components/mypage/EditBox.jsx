@@ -1,36 +1,38 @@
-import {React, useState, useRef} from 'react'
+import * as React from 'react';
+import {useState, useRef} from 'react'
 import Box from '@mui/material/Box'
+import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
 import { Avatar, TextField } from '@mui/material';
 import LoyaltyIcon from '@mui/icons-material/Loyalty';
 import AudioFileIcon from '@mui/icons-material/AudioFile';
 import Input from '@mui/material/Input';
 import {Link} from 'react-router-dom'
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
-import LeftBox from './LeftBox';
+import Autocomplete from '@mui/material/Autocomplete';
+import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
 
 
 const ariaLabel = { 'aria-label': 'description' };
 
-// chip option
-const options = [
-  '발라드',
-  '댄스',
-  '랩/힙합',
-  'R&B/Soul',
-  '인디음악',
-  '록/메탈',
-  '트로트',
-  '포크/블루스',
-  'OST',
-  '클래식'
+// 장르선택
+const genre = [
+  { title:'발라드'},
+  { title:'댄스'},
+  { title:'힙합'},
+  { title:'R&B'},
+  { title:'인디'},
+  { title:'록'},
+  { title:'트로트'},
+  { title:'블루스'},
+  { title:'OST'},
+  { title:'클래식'},
+  { title:'팝송'}
 ];
+const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
+const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
-const EditBox = (props) => {
+export default function EditBox(props) {
 
   // 프로필 사진 추가
   const [Image, setImage] = useState("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png")
@@ -54,36 +56,25 @@ const EditBox = (props) => {
       reader.readAsDataURL(e.target.files[0])
     }
 
-    // option
-      // const [anchorEl, setAnchorEl] = React.useState(null);
-      // const [selectedIndex, setSelectedIndex] = React.useState(1);
-      // const open = Boolean(anchorEl);
-      // const handleClickListItem = (event) => {
-      //   setAnchorEl(event.currentTarget);
-      // };
 
-      // const handleMenuItemClick = (event, index) => {
-      //   setSelectedIndex(index);
-      //   setAnchorEl(null);
-      // };
+    // 소개글, 좋아하는아티스트,노래
+    const onNickChange = (e) =>{
+      e.preventDefault()
+     props.setNickname(e.currentTarget.value);
+    }
+    const onCommentChange = (e) =>{
+          e.preventDefault()
+        props.setComment(e.currentTarget.value);
+    }
+    const onArtChange = (e) =>{
+          e.preventDefault()
+        props.setArt(e.currentTarget.value);
+    }
+    const onSongChange = (e) =>{
+          e.preventDefault()
+        props.setSong(e.currentTarget.value);
+    }
 
-      // const handleClose = () => {
-      //   setAnchorEl(null);
-      // };
-
-      //소개글, 좋아하는아티스트,노래
-      let [comment, setComment] =useState('');
-      let [feedComments, setFeedComments] = useState([]);
-      let [Art, setArt] = useState('');
-      let [Song,setSong] = useState('');
-      let post = e =>{
-        const copyFeedComments = [...feedComments];
-        copyFeedComments.push(comment);
-        setFeedComments(copyFeedComments);
-        setComment('');
-        setArt('#');
-        setSong('#');
-      };
 
   return (
     <Box
@@ -93,7 +84,8 @@ const EditBox = (props) => {
       border: 1,
       borderColor: '#e6e6e6',
       backgroundColor : '#fff',
-      marginLeft: 5
+      marginLeft: 5,
+      zIndex: 999
     }}
   >
         <Box
@@ -102,7 +94,6 @@ const EditBox = (props) => {
             height: 60,
             borderBottom:1,
             borderColor: '#b5b5b5',
-            // backgroundColor: 'gray',
             marginTop:5,
             marginLeft:3,
             display: 'flex',
@@ -118,7 +109,9 @@ const EditBox = (props) => {
             noValidate
             autoComplete="off"
             >
-            <Input defaultValue="NickName" inputProps={ariaLabel} />
+             <Input inputProps={ariaLabel}
+              onChange={onNickChange}
+              value={props.Nickname}></Input>
             </Box>
             <Link to="/Mypage">
             <Button
@@ -132,7 +125,6 @@ const EditBox = (props) => {
                 color: '#8b8b8d',
                }
             }}
-            onClick={post}
             >
             확인
             </Button>
@@ -210,91 +202,37 @@ const EditBox = (props) => {
 
       <Box
       sx={{
-        width: 320,
-        height: 60,
-        marginLeft:3,
+        width: '350px',
+        height: '60px',
+        marginLeft:2,
         display: 'flex',
-        justifyContent: 'space-evenly'
+        flexWrap:'nowrap'
       }}>
-      
-        {/* <List
-          component="nav"
-          aria-label="Device settings"
-          sx={{ bgcolor: 'background.paper', width: '70px', height: '20px' }}
-        >
-          <ListItem
-            button
-            id="lock-button"
-            aria-haspopup="listbox"
-            aria-controls="lock-menu"
-            aria-label="when device is locked"
-            aria-expanded={open ? 'true' : undefined}
-            onClick={handleClickListItem}
-          >
-            <ListItemText
-              primary={options[selectedIndex]}
-            />
-          </ListItem>
-        </List>
-          <Menu
-            id="lock-menu"
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-            MenuListProps={{
-              'aria-labelledby': 'lock-button',
-              role: 'listbox',
-            }}
-          >
-            {options.map((option, index) => (
-              <MenuItem
-                key={option}
-                selected={index === selectedIndex}
-                onClick={(event) => handleMenuItemClick(event, index)}
-              >
-                {option}
-              </MenuItem>
-            ))}
-          </Menu> */}
-          <Box
-          sx={{
-            width: 70,
-            height: 20,
-            backgroundColor: '#ebebeb',
-            borderRadius: '7px',
-            textAlign: 'center',
-            fontSize: '12px',
-            fontWeight : 'bold',
-            color: '#a0a0a0'
-          }}>
-            인디음악
-          </Box>
-          <Box
-          sx={{
-            width: 70,
-            height: 20,
-            backgroundColor: '#ebebeb',
-            borderRadius: '7px',
-            textAlign: 'center',
-            fontSize: '12px',
-            fontWeight : 'bold',
-            color: '#a0a0a0'
-          }}>
-            팝송
-          </Box>
-          <Box
-          sx={{
-            width: 70,
-            height: 20,
-            backgroundColor: '#ebebeb',
-            borderRadius: '7px',
-            textAlign: 'center',
-            fontSize: '12px',
-            fontWeight : 'bold',
-            color: '#a0a0a0'
-          }}>
-            OST
-          </Box>
+          <Autocomplete
+            multiple
+            limitTags={3}
+            id="checkboxes-tags-demo"
+            size="small"
+            options={genre}
+            defaultValue={[genre[4], genre[10], genre[8]]}
+            disableCloseOnSelect
+            getOptionLabel={(option) => option.title}
+            renderOption={(props, option, { selected }) => (
+              <li {...props}>
+                <Checkbox
+                  icon={icon}
+                  checkedIcon={checkedIcon}
+                  style={{ marginRight: 8 }}
+                  checked={selected}
+                />
+                {option.title}
+              </li>
+            )}
+            style={{ width: '340px'}}
+            renderInput={(params) => (
+              <TextField {...params} label="좋아하는 장르 (최대 3가지)"/>
+            )}
+          />
       </Box>
 
       <Box
@@ -324,11 +262,8 @@ const EditBox = (props) => {
            <TextField 
             sx={{ width: '320px', height: '70px' , fontSize:'13px'}}
             placeholder='안녕하세요. 코드 개발자입니다.'
-            onChange={e =>{
-              setComment(e.target.value);
-            }}
-            value={comment}
             inputProps={{style: {fontSize: '13px'}}}
+            onChange={onCommentChange}
             >
             
            </TextField>
@@ -368,13 +303,11 @@ const EditBox = (props) => {
             <TextField 
             sx={{ width: '320px', height: '70px' , fontSize:'13px'}}
             placeholder='# coldplay # IU # 데이먼스이어 # 백예린'
-            onChange={e =>{
-              setArt(e.target.value);
-            }}
             inputProps={{style: {fontSize: '13px'}}}
+            onChange={onArtChange}
             >
-            
            </TextField>
+
           </Box>
       </Box>
 
@@ -409,25 +342,14 @@ const EditBox = (props) => {
             <TextField 
             sx={{ width: '320px', height: '70px' , fontSize:'13px'}}
             placeholder='# 밤편지 # 0310 # Antifreeze'
-            onChange={e =>{
-              setSong(e.target.value);
-            }}
             inputProps={{style: {fontSize: '13px'}}}
+            onChange={onSongChange}
             >
             
            </TextField>
           </Box>
       </Box>
-      {feedComments.map((commentArr, i) =>{
-            return(
-                <LeftBox                  
-                    userComment={commentArr}
-                    key={i}/>
-            );
-        })}
   </Box>
    
   )
 }
-
-export default EditBox

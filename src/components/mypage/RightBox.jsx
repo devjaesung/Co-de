@@ -63,7 +63,7 @@ export default function BasicTabs() {
       backgroundColor : '#fff',
       marginTop: 10,
       marginLeft: 20,
-      zIndex: 990
+      zIndex: 3
     }}
   >
         <Box

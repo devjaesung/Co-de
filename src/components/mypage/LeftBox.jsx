@@ -7,7 +7,6 @@ import AudioFileIcon from '@mui/icons-material/AudioFile';
 import {Link} from 'react-router-dom'
 
 const LeftBox = (props) => {
-  console.log(props.userComment)
   return (
    <Box
     sx={{
@@ -33,7 +32,7 @@ const LeftBox = (props) => {
         }}                                                                        
         >
             <Typography sx={{fontSize: '25px', fontWeight: 'bold', flex: 8}}>
-              NickName</Typography>
+            {props.Nickname}</Typography>
             <Link to="/MyEditpage">
             <Button
             sx={{
@@ -132,7 +131,7 @@ const LeftBox = (props) => {
             fontWeight : 'bold',
             color: '#a0a0a0'
           }}>
-            인디음악
+            인디
           </Box>
           <Box
           sx={{
@@ -187,7 +186,7 @@ const LeftBox = (props) => {
             color: '#acacac',
             fontSize: '13px'
           }}>
-            {props.userComment}
+            {props.comment}
           </Box>
       </Box>
       
@@ -222,7 +221,7 @@ const LeftBox = (props) => {
             color: '#acacac',
             fontSize: '13px'
           }}>
-            # coldplay # IU # 데이먼스이어 # 백예린
+             {props.Art}
           </Box>
       </Box>
 
@@ -255,7 +254,7 @@ const LeftBox = (props) => {
             color: '#acacac',
             fontSize: '13px'
           }}>
-            # 밤편지 # 0310 # Antifreeze
+             {props.Song}
           </Box>
       </Box>
   </Box> 
