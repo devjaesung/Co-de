@@ -1,7 +1,7 @@
 import {React, useState, useRef} from 'react'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button';
-import { Avatar } from '@mui/material';
+import { Avatar, TextField } from '@mui/material';
 import LoyaltyIcon from '@mui/icons-material/Loyalty';
 import AudioFileIcon from '@mui/icons-material/AudioFile';
 import Input from '@mui/material/Input';
@@ -11,6 +11,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+import LeftBox from './LeftBox';
 
 
 const ariaLabel = { 'aria-label': 'description' };
@@ -70,6 +71,20 @@ const EditBox = (props) => {
       //   setAnchorEl(null);
       // };
 
+      //소개글, 좋아하는아티스트,노래
+      let [comment, setComment] =useState('');
+      let [feedComments, setFeedComments] = useState([]);
+      let [Art, setArt] = useState('');
+      let [Song,setSong] = useState('');
+      let post = e =>{
+        const copyFeedComments = [...feedComments];
+        copyFeedComments.push(comment);
+        setFeedComments(copyFeedComments);
+        setComment('');
+        setArt('#');
+        setSong('#');
+      };
+
   return (
     <Box
     sx={{
@@ -117,6 +132,7 @@ const EditBox = (props) => {
                 color: '#8b8b8d',
                }
             }}
+            onClick={post}
             >
             확인
             </Button>
@@ -296,17 +312,26 @@ const EditBox = (props) => {
             fontSize: '16px',
             color: '#7a7a7a'
           }}>
-            소개글 (15/50자)
+            소개글
           </Box>
           <Box
           sx={{
-            height: 60,
+            height: 70,
             marginTop:2,
-            paddingLeft: 1,
             color: '#acacac',
             fontSize: '13px'
           }}>
-            안녕하세요. 코드개발자 입니다.
+           <TextField 
+            sx={{ width: '320px', height: '70px' , fontSize:'13px'}}
+            placeholder='안녕하세요. 코드 개발자입니다.'
+            onChange={e =>{
+              setComment(e.target.value);
+            }}
+            value={comment}
+            inputProps={{style: {fontSize: '13px'}}}
+            >
+            
+           </TextField>
           </Box>
       </Box>
       
@@ -337,11 +362,19 @@ const EditBox = (props) => {
           sx={{
             height: 60,
             marginTop:2,
-            paddingLeft: 1,
             color: '#acacac',
             fontSize: '13px'
           }}>
-            # coldplay # IU # 데이먼스이어 # 백예린
+            <TextField 
+            sx={{ width: '320px', height: '70px' , fontSize:'13px'}}
+            placeholder='# coldplay # IU # 데이먼스이어 # 백예린'
+            onChange={e =>{
+              setArt(e.target.value);
+            }}
+            inputProps={{style: {fontSize: '13px'}}}
+            >
+            
+           </TextField>
           </Box>
       </Box>
 
@@ -370,14 +403,30 @@ const EditBox = (props) => {
           sx={{
             height: 60,
             marginTop:2,
-            paddingLeft: 1,
             color: '#acacac',
             fontSize: '13px'
           }}>
-            # 밤편지 # 0310 # Antifreeze
+            <TextField 
+            sx={{ width: '320px', height: '70px' , fontSize:'13px'}}
+            placeholder='# 밤편지 # 0310 # Antifreeze'
+            onChange={e =>{
+              setSong(e.target.value);
+            }}
+            inputProps={{style: {fontSize: '13px'}}}
+            >
+            
+           </TextField>
           </Box>
       </Box>
-  </Box> 
+      {feedComments.map((commentArr, i) =>{
+            return(
+                <LeftBox                  
+                    userComment={commentArr}
+                    key={i}/>
+            );
+        })}
+  </Box>
+   
   )
 }
 

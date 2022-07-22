@@ -6,7 +6,8 @@ import LoyaltyIcon from '@mui/icons-material/Loyalty';
 import AudioFileIcon from '@mui/icons-material/AudioFile';
 import {Link} from 'react-router-dom'
 
-const LeftBox = () => {
+const LeftBox = (props) => {
+  console.log(props.userComment)
   return (
    <Box
     sx={{
@@ -176,7 +177,7 @@ const LeftBox = () => {
             fontSize: '16px',
             color: '#7a7a7a'
           }}>
-            소개글 (15/50자)
+            소개글
           </Box>
           <Box
           sx={{
@@ -186,7 +187,7 @@ const LeftBox = () => {
             color: '#acacac',
             fontSize: '13px'
           }}>
-            안녕하세요. 코드개발자 입니다.
+            {props.userComment}
           </Box>
       </Box>
       
