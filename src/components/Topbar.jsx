@@ -5,10 +5,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import SettingsIcon from '@mui/icons-material/Settings';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import {Link} from 'react-router-dom'
-<<<<<<< HEAD
-=======
 import LoginIcon from '@mui/icons-material/Login';
->>>>>>> origin/hoon
 
 const TopBar = () => {
 

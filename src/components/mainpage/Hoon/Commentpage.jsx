@@ -3,26 +3,16 @@ import { Container,Box, Typography } from '@mui/material'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Avatar from '@mui/material/Avatar';
 import YouTube from 'react-youtube';
-<<<<<<< HEAD:src/components/mainpage/Commentpage.jsx
-import CommentRight from './CommentRight';
-import Data from './data.json'
-=======
 import RecommendData from '../recommend.json'
->>>>>>> origin/hoon:src/components/mainpage/Hoon/Commentpage.jsx
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import RecommendBox from '../RecommendBox';
 import CommentTest from './CommentTest';
 import {Link} from 'react-router-dom';
-<<<<<<< HEAD:src/components/mainpage/Commentpage.jsx
-const Commentpage = () => {
-=======
-import Test from './Test'
 
 
 const Commentpage = (history) => {
->>>>>>> origin/hoon:src/components/mainpage/Hoon/Commentpage.jsx
 
   const [btn, setBtn] = useState(true);
   const [numBtn,setNumBtn] = useState(13);
@@ -42,14 +32,9 @@ const Commentpage = (history) => {
                 marginTop:'130px',
                 padding:'0px'
             }}>
-<<<<<<< HEAD:src/components/mainpage/Commentpage.jsx
-              <Link to="/">
-              <ArrowBackIcon  sx={{color:'#dddddd', fontSize:'32px', marginLeft:'5px',height:'30px',cursor:'pointer'
-=======
               <Link to="/Test">
               <ArrowBackIcon  onClick={() => history.goBack()}
                               sx={{color:'#dddddd', fontSize:'32px', marginLeft:'5px',height:'30px',cursor:'pointer'
->>>>>>> origin/hoon:src/components/mainpage/Hoon/Commentpage.jsx
                               ,':hover': {
                                 color: 'black',
                                 textDecoration:'none'
