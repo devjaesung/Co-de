@@ -1,13 +1,81 @@
-import React from 'react'
+import * as React from 'react';
+import {useState, useRef} from 'react'
 import Box from '@mui/material/Box'
+import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { Avatar, TextField } from '@mui/material';
 import LoyaltyIcon from '@mui/icons-material/Loyalty';
 import AudioFileIcon from '@mui/icons-material/AudioFile';
 import Input from '@mui/material/Input';
+import {Link} from 'react-router-dom'
+import Autocomplete from '@mui/material/Autocomplete';
+import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
+
 
 const ariaLabel = { 'aria-label': 'description' };
-const EditBox = () => {
+
+// 장르선택
+const genre = [
+  { title:'발라드'},
+  { title:'댄스'},
+  { title:'힙합'},
+  { title:'R&B'},
+  { title:'인디'},
+  { title:'록'},
+  { title:'트로트'},
+  { title:'블루스'},
+  { title:'OST'},
+  { title:'클래식'},
+  { title:'팝송'}
+];
+const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
+const checkedIcon = <CheckBoxIcon fontSize="small" />;
+
+export default function EditBox(props) {
+
+  // 프로필 사진 추가
+  const [Image, setImage] = useState("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png")
+  const fileInput = useRef(null)
+
+  const [File, setFile] = useState('')
+  const onChange = (e) => {
+    if(e.target.files[0]){
+        setFile(e.target.files[0])
+    }else{ //업로드 취소할 시
+        setImage("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png")
+    return
+    }
+    //화면에 프로필 사진 표시
+    const reader = new FileReader();
+    reader.onload = () => {
+        if(reader.readyState === 2){
+           setImage(reader.result)
+          }
+      }
+      reader.readAsDataURL(e.target.files[0])
+    }
+
+
+    // 소개글, 좋아하는아티스트,노래
+    const onNickChange = (e) =>{
+      e.preventDefault()
+     props.setNickname(e.currentTarget.value);
+    }
+    const onCommentChange = (e) =>{
+          e.preventDefault()
+        props.setComment(e.currentTarget.value);
+    }
+    const onArtChange = (e) =>{
+          e.preventDefault()
+        props.setArt(e.currentTarget.value);
+    }
+    const onSongChange = (e) =>{
+          e.preventDefault()
+        props.setSong(e.currentTarget.value);
+    }
+
+
   return (
     <Box
     sx={{
@@ -16,7 +84,8 @@ const EditBox = () => {
       border: 1,
       borderColor: '#e6e6e6',
       backgroundColor : '#fff',
-      marginLeft: 5
+      marginLeft: 5,
+      zIndex: 999
     }}
   >
         <Box
@@ -25,7 +94,6 @@ const EditBox = () => {
             height: 60,
             borderBottom:1,
             borderColor: '#b5b5b5',
-            // backgroundColor: 'gray',
             marginTop:5,
             marginLeft:3,
             display: 'flex',
@@ -36,26 +104,31 @@ const EditBox = () => {
             component="form"
             sx={{
                 '& > :not(style)': { m: 1 },
+                flex:8
             }}
             noValidate
             autoComplete="off"
             >
-            <Input defaultValue="Nick Name" inputProps={ariaLabel} />
+             <Input inputProps={ariaLabel}
+              onChange={onNickChange}
+              value={props.Nickname}></Input>
             </Box>
+            <Link to="/Mypage">
             <Button
             sx={{
-               marginLeft: "auto",
-               backgroundColor: '#dddddd',
-               color: '#8b8b8d',
+               marginLeft: 'auto',
+               backgroundColor: '#6667AB',
+               color: 'white',
                fontWeight: 'bold',
                ':hover': {
-                bgcolor: '#6667AB', 
-                color: 'white',
+                bgcolor: '#dddddd', 
+                color: '#8b8b8d',
                }
             }}
             >
-            수정
+            확인
             </Button>
+            </Link>
         </Box>
       <Box
         sx={{
@@ -113,63 +186,53 @@ const EditBox = () => {
         justifyContent: 'center',
         alignItems: 'center'
       }}>
-       <AccountCircleIcon
-        sx={{
-          fontSize: '150px'
-        }}
-        color="disabled"
-        >
-        <input type="file" name="file" onChange={null}/>    
-        </AccountCircleIcon>
+       <Avatar 
+        src={Image} 
+        style={{margin:'20px', width: '120px', height:'120px', cursor: 'pointer'}} 
+        onClick={()=>{fileInput.current.click()}}/>
+         <input 
+            type='file' 
+            style={{display:'none'}}
+            accept='image/jpg,impge/png,image/jpeg' 
+            name='profile_img'
+            onChange={onChange}
+            ref={fileInput}
+          />
       </Box>
 
       <Box
       sx={{
-        width: 320,
-        height: 60,
-        marginLeft:3,
+        width: '350px',
+        height: '60px',
+        marginLeft:2,
         display: 'flex',
-        justifyContent: 'space-evenly'
+        flexWrap:'nowrap'
       }}>
-          <Box
-          sx={{
-            width: 70,
-            height: 20,
-            backgroundColor: '#ebebeb',
-            borderRadius: '7px',
-            textAlign: 'center',
-            fontSize: '12px',
-            fontWeight : 'bold',
-            color: '#a0a0a0'
-          }}>
-            인디음악
-          </Box>
-          <Box
-          sx={{
-            width: 70,
-            height: 20,
-            backgroundColor: '#ebebeb',
-            borderRadius: '7px',
-            textAlign: 'center',
-            fontSize: '12px',
-            fontWeight : 'bold',
-            color: '#a0a0a0'
-          }}>
-            팝송
-          </Box>
-          <Box
-          sx={{
-            width: 70,
-            height: 20,
-            backgroundColor: '#ebebeb',
-            borderRadius: '7px',
-            textAlign: 'center',
-            fontSize: '12px',
-            fontWeight : 'bold',
-            color: '#a0a0a0'
-          }}>
-            OST
-          </Box>
+          <Autocomplete
+            multiple
+            limitTags={3}
+            id="checkboxes-tags-demo"
+            size="small"
+            options={genre}
+            defaultValue={[genre[4], genre[10], genre[8]]}
+            disableCloseOnSelect
+            getOptionLabel={(option) => option.title}
+            renderOption={(props, option, { selected }) => (
+              <li {...props}>
+                <Checkbox
+                  icon={icon}
+                  checkedIcon={checkedIcon}
+                  style={{ marginRight: 8 }}
+                  checked={selected}
+                />
+                {option.title}
+              </li>
+            )}
+            style={{ width: '340px'}}
+            renderInput={(params) => (
+              <TextField {...params} label="좋아하는 장르 (최대 3가지)"/>
+            )}
+          />
       </Box>
 
       <Box
@@ -187,17 +250,23 @@ const EditBox = () => {
             fontSize: '16px',
             color: '#7a7a7a'
           }}>
-            소개글 (15/50자)
+            소개글
           </Box>
           <Box
           sx={{
-            height: 60,
+            height: 70,
             marginTop:2,
-            paddingLeft: 1,
             color: '#acacac',
             fontSize: '13px'
           }}>
-            안녕하세요. 코드개발자 입니다.
+           <TextField 
+            sx={{ width: '320px', height: '70px' , fontSize:'13px'}}
+            placeholder='안녕하세요. 코드 개발자입니다.'
+            inputProps={{style: {fontSize: '13px'}}}
+            onChange={onCommentChange}
+            >
+            
+           </TextField>
           </Box>
       </Box>
       
@@ -228,11 +297,17 @@ const EditBox = () => {
           sx={{
             height: 60,
             marginTop:2,
-            paddingLeft: 1,
             color: '#acacac',
             fontSize: '13px'
           }}>
-            # coldplay # IU # 데이먼스이어 # 백예린
+            <TextField 
+            sx={{ width: '320px', height: '70px' , fontSize:'13px'}}
+            placeholder='# coldplay # IU # 데이먼스이어 # 백예린'
+            inputProps={{style: {fontSize: '13px'}}}
+            onChange={onArtChange}
+            >
+           </TextField>
+
           </Box>
       </Box>
 
@@ -261,15 +336,20 @@ const EditBox = () => {
           sx={{
             height: 60,
             marginTop:2,
-            paddingLeft: 1,
             color: '#acacac',
             fontSize: '13px'
           }}>
-            # 밤편지 # 0310 # Antifreeze
+            <TextField 
+            sx={{ width: '320px', height: '70px' , fontSize:'13px'}}
+            placeholder='# 밤편지 # 0310 # Antifreeze'
+            inputProps={{style: {fontSize: '13px'}}}
+            onChange={onSongChange}
+            >
+            
+           </TextField>
           </Box>
       </Box>
-  </Box> 
+  </Box>
+   
   )
 }
-
-export default EditBox
