@@ -16,7 +16,7 @@ const Mainpage = () => {
     <Route path='/' element={<FeedMainpage/>}/>
     <Route path='/FeedDetail' element={<Commentpage/>}/>
     <Route path='/TalkMain' element={<MainTalk/>}/>
-    <Route path='/TalkMain/TalkDetail' element={<TalkDetail/>}/>
+    <Route path='/TalkDetail' element={<TalkDetail/>}/>
     </Routes>
 
     </>

@@ -3,23 +3,23 @@ import { Container, Grid, IconButton } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import TalkLeft from './talkdetailin/TalkLeft';
 import TalkRight from './talkdetailin/TalkRight';
-import {Link} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
 const Talkpage = () => {
+  let navigate = useNavigate();
   return (
     <Container 
       sx={{width:"1083px",
            marginTop:"55px"}}>
       <Grid sx={{mx:"-24px", mb:"15px", pt:"30px"}}>
-        <Link to="/TalkMain"><IconButton aria-label="go back">
+        <IconButton aria-label="go back" onClick={()=>{ navigate(-1) }}>
           <ArrowBackIcon />
         </IconButton>
-        </Link>
       </Grid>
       <Grid container spacing={2}
         sx={{width:"1083px", mx:"-24px"}}>
         <TalkLeft />
-        <TalkRight space="1050px"/>
+        <TalkRight space="1230px"/>
       </Grid>
     </Container>
   )

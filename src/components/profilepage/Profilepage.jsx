@@ -1,16 +1,16 @@
 import React from 'react'
+import { Route, Routes } from 'react-router-dom'
 import ProfileTop from './ProfileTop'
-import FeedTab from './FeedTab'
-import TalkTab from './TalkTab'
-import FollowBox from './FollowBox'
-import { Box } from '@mui/system'
 import TopBar from '../Topbar'
+
+import Commentpage from '../mainpage/Commentpage'
+import TalkDetail from '../talkdetail/TalkDetail'
 
 const Profilepage = () => {
   return (
     <>
       <TopBar/>
-      <ProfileTop />
+      <ProfileTop/>
     </>
 
   )
