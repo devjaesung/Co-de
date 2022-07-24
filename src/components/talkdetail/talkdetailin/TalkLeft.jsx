@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Grid, Box, IconButton } from '@mui/material';
+import { Grid, Box, IconButton, Menu, MenuItem } from '@mui/material';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -8,9 +8,21 @@ import TalkComment from '../talkdetailin2/TalkComment';
 
 const TalkLeft = () => {
   const [btn, setBtn] = useState(false);
+  const [heartNum, setHeartNum] = useState(128);
+  const [anchorEl, setAnchorEl] = useState(null);
+
   const Invert = () => {
     setBtn((current) => !btn);
   };  
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleClick = (e) => {
+    setAnchorEl(e.currentTarget);
+  };
+
   return (
     <Grid item 
       sx={{width:"789px",
@@ -25,8 +37,17 @@ const TalkLeft = () => {
         </Box>
         <Box>
           <IconButton>
-            <MoreHorizIcon />
+            <MoreHorizIcon 
+              onClick={handleClick} />
           </IconButton>
+          <Menu 
+            anchorEl={anchorEl}
+            onClose={handleClose}
+            open={Boolean(anchorEl)}>
+            <MenuItem onClick={handleClose}>저장하기</MenuItem>
+            <MenuItem onClick={handleClose}>공유하기</MenuItem>
+            <MenuItem onClick={handleClose}>신고하기</MenuItem>
+          </Menu>
         </Box>
       </Grid>
       <Grid>
@@ -45,13 +66,13 @@ const TalkLeft = () => {
         <IconButton aria-label="heart" onClick={Invert}>
           {btn?  <FavoriteIcon sx={{color:"#e64a3d"}} />:<FavoriteBorderIcon sx={{color:"#e64a3d"}}/>} 
         </IconButton>
-        <span style={{color:"#e64a3d"}}>1564</span>
+        <span style={{color:"#e64a3d"}}>{btn ? heartNum+1:heartNum}</span>
         <ChatBubbleOutlineIcon
           sx={{color:"#555", 
                verticalAlign:"-8px", 
                ml:"15px", 
                mr:"7px"}} />
-        <span>200</span>
+        <span>1564</span>
       </Grid>
       <TalkComment />
     </Grid>

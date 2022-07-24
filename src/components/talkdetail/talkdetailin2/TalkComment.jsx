@@ -11,7 +11,8 @@ const TalkComment = () => {
     e.preventDefault();
     if(comment === ''){
       return;
-    };
+    }
+    setComment("");
     setCommentArray(commentValueList => [comment, ...commentValueList]);
   };
 
@@ -19,8 +20,8 @@ const TalkComment = () => {
     <>
     <Grid sx={{borderTop:"2px solid #cecece",
                borderBottom:"2px solid #cecece"}}>
-      <Box onSubmit={onSubmit}>
-        <form style={{display:"flex", padding:"15px"}}>
+      <Box>
+        <form style={{display:"flex", padding:"15px"}} onSubmit={onSubmit}>
           <Box>
             <img src="/images/profile.jpg" alt="프로필 사진" className="d-profileimg" />
           </Box>
