@@ -28,7 +28,7 @@ const MainTalk = () => {
         )
       })}
       </Box>
-      <TalkRight space="1000px"/>
+      <TalkRight space="1200px"/>
      
     </Container>
   )

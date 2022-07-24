@@ -1,9 +1,8 @@
 import {React,useState} from 'react'
 import { Box, Avatar, Typography, Divider, IconButton, Menu, MenuItem } from '@mui/material'
-import {  Chat, MoreHoriz,ThumbUpAlt,ThumbUpOffAlt } from '@mui/icons-material';
+import {  Chat, MoreHoriz,FavoriteBorder,Favorite} from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 
-const ITEM_HEIGHT = 48;
 
 const TalkContent = (props) => {
 
@@ -44,19 +43,13 @@ const TalkContent = (props) => {
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
-        PaperProps={{
-          style: {
-            maxHeight: ITEM_HEIGHT * 4.5,
-            width: '100px',
-          },
-        }}
       >
         <MenuItem onClick={handleClose}>저장하기</MenuItem>
         <MenuItem onClick={handleClose}>공유하기</MenuItem>
         <MenuItem onClick={handleClose}>신고하기</MenuItem>
       </Menu>
     </Box>
-    <Link to="TalkDetail">
+    <Link to="/TalkDetail">
       <Typography variant='subtitle1' component="h2" fontSize={16} fontWeight={"bold"} >
         {props.title}
         <span style={{color:"#999",fontSize:"10px", fontWeight:"regular", marginLeft:"5px"}}>{props.day}일전</span>
@@ -79,8 +72,8 @@ const TalkContent = (props) => {
         <Typography variant='body2' component="p" marginTop={1}>
 
           <span onClick={Invert}>
-            {btn? <ThumbUpOffAlt/> : <ThumbUpAlt color='primary'/>}
-            {btn? numOfBtn : numOfBtn + 1 }
+          {btn? <FavoriteBorder sx={{color: "#e64a3d"}}/>:<Favorite sx={{color: "#e64a3d"}}/>}
+            <span style={{color:"#e64a3d"}}>{btn? numOfBtn : numOfBtn + 1 }</span>
                 </span>
             <Chat fontSize='small' sx={{marginLeft: "10px"}}/>
               {props.chat}   

@@ -25,7 +25,7 @@ const TopBar = () => {
     justifyContent: "space-between"
     }}>
     <Link to="/"><img src="images/test.svg" alt="logo" /></Link>
-    <div style={{display:"flex"}}>
+    <div>
     <IconButton
         edge="start"
         color="inherit"
@@ -35,6 +35,7 @@ const TopBar = () => {
         aria-expanded={open ? 'true' : undefined}
         aria-haspopup="true"
         onClick={handleClick}
+        sx={{mr:2}}
       >
             <AddCircleOutlineIcon />
       </IconButton>
@@ -50,9 +51,9 @@ const TopBar = () => {
     <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
         <SearchIcon />
     </IconButton>
-    <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
-        <Link to="/Mypage"><PersonIcon /></Link>
-    </IconButton>
+    <Link to="/Mypage"><IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
+        <PersonIcon />
+    </IconButton></Link>
     <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
         <SettingsIcon />
     </IconButton>

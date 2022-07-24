@@ -12,7 +12,7 @@ const CommentText = () => {
   return (
     <Box>
       <IconButton aria-label="heart" onClick={Invert}>
-        {btn? <FavoriteIcon sx={{color:"red"}} />:<FavoriteBorderIcon/>} 
+        {btn? <FavoriteIcon sx={{color:"#e64a3d"}} />:<FavoriteBorderIcon/>} 
       </IconButton>
       <ChatBubbleOutlineIcon sx={{color:"#555", verticalAlign:"-8px"}} />
     </Box>

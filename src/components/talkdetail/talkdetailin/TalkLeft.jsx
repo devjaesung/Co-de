@@ -43,9 +43,9 @@ const TalkLeft = () => {
       </Grid>
       <Grid>
         <IconButton aria-label="heart" onClick={Invert}>
-          {btn?  <FavoriteIcon sx={{color:"red"}} />:<FavoriteBorderIcon/>} 
+          {btn?  <FavoriteIcon sx={{color:"#e64a3d"}} />:<FavoriteBorderIcon sx={{color:"#e64a3d"}}/>} 
         </IconButton>
-        <span>1564</span>
+        <span style={{color:"#e64a3d"}}>1564</span>
         <ChatBubbleOutlineIcon
           sx={{color:"#555", 
                verticalAlign:"-8px", 

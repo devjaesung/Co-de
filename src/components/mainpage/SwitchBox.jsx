@@ -17,7 +17,7 @@ const SwitchBox = () => {
     }
 
   return (
-    <Box sx={{ width:"100px",zIndex:"999",position:'fixed',top:"120px",left:"80px",display:"flex"}}>
+    <Box sx={{ width:"100px",zIndex:"999",position:'fixed',top:"120px",left:"220px",display:"flex"}}>
         <Link to='/' onClick={SwitchTalk}><IconButton>
             {active? <SlideshowIcon/>:<SlideshowTwoToneIcon color="secondary"/>}
         </IconButton>

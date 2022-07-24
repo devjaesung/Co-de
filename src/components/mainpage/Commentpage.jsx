@@ -10,9 +10,10 @@ import Favorite from '@mui/icons-material/Favorite';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import CommentBox from './CommentBox';
 import CommentTest from './CommentTest';
-import {Link} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 const Commentpage = () => {
 
+  let navigate = useNavigate();
   const [btn, setBtn] = useState(true);
   const [numBtn,setNumBtn] = useState(13);
   const [chatCount,setchatCount] = useState(250);
@@ -31,12 +32,13 @@ const Commentpage = () => {
                 marginTop:'130px',
                 padding:'0px'
             }}>
-              <Link to="/">
               <ArrowBackIcon  sx={{color:'#dddddd', fontSize:'32px', marginLeft:'5px',height:'30px',cursor:'pointer'
                               ,':hover': {
                                 color: 'black',
                                 textDecoration:'none'
-                              }}}/></Link>
+                              }}}
+                              onClick={()=>{ navigate(-1) }}
+                              />
                 <Box 
                 sx={{display:'flex'}}>
                 {/* 박스 왼쪽 */}

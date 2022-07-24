@@ -46,9 +46,9 @@ const VideoFeed = (props) => {
                 //이벤트 리스너 
                 onEnd={(e)=>{e.target.stopVideo(0);}}/>
         </Box>
-        <Link to="FeedDetail">
+
         <Box sx={{height: "35px",display: "flex", alignItems:"center"}}>
-            
+
             <Typography sx={{fontWeight:"bold", fontSize:"16px", marginLeft:"10px"}}>{props.title}</Typography>
             <IconButton sx={{marginLeft: 'auto'}}
                 aria-label="more"
@@ -71,6 +71,7 @@ const VideoFeed = (props) => {
                 <MenuItem onClick={handleClose}>신고하기</MenuItem>
             </Menu>
         </Box>
+        <Link to="FeedDetail">
         <Box sx={{ height: "60px", padding:"2px"}}>
             <Typography sx={{margin:"0px 10px", fontSize:"13px"}}>{props.content}</Typography>
         </Box>
