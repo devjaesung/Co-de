@@ -5,6 +5,10 @@ import PersonIcon from '@mui/icons-material/Person';
 import SettingsIcon from '@mui/icons-material/Settings';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import {Link} from 'react-router-dom'
+<<<<<<< HEAD
+=======
+import LoginIcon from '@mui/icons-material/Login';
+>>>>>>> origin/hoon
 
 const TopBar = () => {
 
@@ -25,6 +29,7 @@ const TopBar = () => {
     justifyContent: "space-between"
     }}>
     <Link to="/"><img src="images/test.svg" alt="logo" /></Link>
+    <Link to="/Loginpage"><LoginIcon/></Link>
     <div style={{display:"flex"}}>
     <IconButton
         edge="start"

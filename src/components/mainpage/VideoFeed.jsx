@@ -46,10 +46,11 @@ const VideoFeed = (props) => {
                 //이벤트 리스너 
                 onEnd={(e)=>{e.target.stopVideo(0);}}/>
         </Box>
-        <Link to="FeedDetail">
+        
         <Box sx={{height: "35px",display: "flex", alignItems:"center"}}>
-            
+            <Link to="FeedDetail">
             <Typography sx={{fontWeight:"bold", fontSize:"16px", marginLeft:"10px"}}>{props.title}</Typography>
+            </Link>
             <IconButton sx={{marginLeft: 'auto'}}
                 aria-label="more"
                 id="long-button"
@@ -58,7 +59,7 @@ const VideoFeed = (props) => {
                 aria-haspopup="true"
                 onClick={handleClick}
             >
-                <MoreHorizIcon sx={{color: '#a7a7a7', fontSize: "30px",':hover': {color: '#333'}}} />
+                <MoreHorizIcon sx={{color: '#a7a7a7', fontSize: "30px", ':hover': {color: '#333'}}} />
             </IconButton>
             <Menu
                 id="long-menu"
@@ -71,6 +72,7 @@ const VideoFeed = (props) => {
                 <MenuItem onClick={handleClose}>신고하기</MenuItem>
             </Menu>
         </Box>
+        <Link to="FeedDetail">
         <Box sx={{ height: "60px", padding:"2px"}}>
             <Typography sx={{margin:"0px 10px", fontSize:"13px"}}>{props.content}</Typography>
         </Box>
@@ -96,11 +98,11 @@ const VideoFeed = (props) => {
                 marginTop: 0.5
             }}>222</Typography>
         </Box>
-        <Box sx={{ height: '30px', paddingLeft: '10px', display : 'flex', alignItems: 'center'}}>
-            <Typography sx={{ color: '#939393', fontSize: '13px'}}>{props.tag}</Typography>
+        <Box sx={{ height: '30px', paddingLeft: '10px', marginTop: '13px', display : 'flex', alignItems: 'center'}}>
+            <Typography sx={{ color: '#939393', fontSize: '13px', flex: 8}}>{props.tag}</Typography>
             <Link to="Profile">
-            <Typography sx={{marginRight:"6px", fontSize:"13px", fontWeight:"bold", color: "#333", marginLeft:'auto'}}>{props.nickname}</Typography> 
-            <Avatar alt="Avatar" src={props.profile} sx={{ width: 19, height: 19, border: "1px solid #666", marginRight: "3px"}}/>
+            <Typography sx={{marginRight:"6px", fontSize:"13px", fontWeight:"bold", color: "#333", float: 'left'}}>{props.nickname}</Typography> 
+            <Avatar alt="Avatar" src={props.profile} sx={{ width: 19, height: 19, border: "1px solid #666", marginRight: '5px'}}/>
             </Link>
         </Box>
     </Box>

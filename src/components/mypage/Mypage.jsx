@@ -23,8 +23,13 @@ const Mypage = () => {
         backgroundColor: '#f5f5f5'
     }}
     >
+<<<<<<< HEAD
     <LeftBox />
     {/* <EditBox /> */}
+=======
+    {/* <LeftBox /> */}
+    <EditBox />
+>>>>>>> origin/hoon
     <RightBox />
   
   </Box>

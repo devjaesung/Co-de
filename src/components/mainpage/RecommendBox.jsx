@@ -13,9 +13,11 @@ const RecommendBox = (props) => {
         }}>
             <Box
             sx={{
-                height: "140px"
+                height: "140px",
+                transition: 'transform 0.5s',
+                ':hover': {transform : 'scale(1.05)'}
             }}>
-                <img src={props.image} alt="singer01" width={274} height={140}/>
+                <img src={props.image} alt="singer01" width={273} height={140}/>
             </Box>
             <Box
             sx={{

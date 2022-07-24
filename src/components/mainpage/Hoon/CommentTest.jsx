@@ -2,19 +2,21 @@ import React, { useState } from 'react'
 import { Box, Button, TextField } from '@mui/material';
 import CommentList from './CommentList';
 import styled from "styled-components";
+import PersonIcon from '@mui/icons-material/Person';
+
+
 const White = styled(TextField)`
   & label.Mui-focused {
     color: black;
   }
   & .MuiOutlinedInput-root {
     &.Mui-focused fieldset {
-      border-color: white;
+      border-color: black;
     }
   }
 `;
 
 export default function CommentTest() {
-    let [userName] = useState('hacker');
     let [comment, setComment] =useState('');
     let [feedComments, setFeedComments] = useState([]);
     let [isVaild, setIsVaild] = useState(false);
@@ -24,12 +26,16 @@ export default function CommentTest() {
         setFeedComments(copyFeedComments);
         setComment('');
     };
+
   return (
     <Box >  
-        <Box sx={{display:'flex', alignItems:'center'}}>{userName}
+        <Box sx={{display:'flex', alignItems:'center'}}>
+          <PersonIcon/>
         <White sx={{ width: '80%',
+                     marginLeft:'10px',
                     '& fieldset':{
-                     height:'60px',
+                      marginTop:'10px',
+                     height:'40px',
                      borderRadius:'25px',
                      backgroundColor:''
                     }}}
@@ -43,7 +49,16 @@ export default function CommentTest() {
                  : setIsVaild(false)
             }}
             value={comment}/>
-            <Button
+            <Button sx={{
+              marginLeft:'10px',
+              backgroundColor: '#dddddd',
+              color: '#8b8b8d',
+              borderRadius:'30px',
+              ':hover': {
+                bgcolor: '#6667AB', 
+                color: 'white',
+               }
+            }}
                 className={
                     comment.length > 0
                     ? 'submitCommentActive'
@@ -53,8 +68,7 @@ export default function CommentTest() {
                 disabled={isVaild ? false : true}>게시</Button></Box>
         {feedComments.map((commentArr, i) =>{
             return(
-                <CommentList
-                    userName={userName}
+                <CommentList                   
                     userComment={commentArr}
                     key={i}/>
             );
